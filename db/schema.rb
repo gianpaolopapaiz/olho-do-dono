@@ -69,15 +69,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_191818) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
-    t.text "comment"
-    t.bigint "table_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["table_id"], name: "index_ratings_on_table_id"
-  end
-
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -121,7 +112,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_191818) do
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "tables"
   add_foreign_key "products", "restaurants"
-  add_foreign_key "ratings", "tables"
   add_foreign_key "restaurants", "users"
   add_foreign_key "tables", "restaurants"
 end
