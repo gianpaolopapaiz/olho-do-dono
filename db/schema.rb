@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_182219) do
+ActiveRecord::Schema.define(version: 2021_06_07_190805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,13 @@ ActiveRecord::Schema.define(version: 2021_06_07_182219) do
 
   create_table "tables", force: :cascade do |t|
     t.integer "number"
-    t.string "status"
     t.string "payment_type"
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rating"
+    t.text "comment"
+    t.string "status", default: "available"
     t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
   end
 
