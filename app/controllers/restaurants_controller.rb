@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = current_user.restaurants.all
   end
 
   def show
@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @restaurant = Restaurant.new()
   end
 
   def create
