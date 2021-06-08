@@ -1,0 +1,34 @@
+<div class="olho-form-container">
+  <div class="olho-div">
+    <table class="table">
+    <h2 class="m-3"><strong>Expense List</strong></h2>
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Due Date</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.description %></td>
+          <td><%= expense.category %></td>
+          <td><%= expense.amount %></td>
+          <td><%= expense.due_date %></td>
+          <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %>
+</td>
+          <td><%= link_to 'update', expense_path(expense), class: 'olho-btn-card olho-green', method: :update %>
+</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="m-3">
+      <%= link_to "New Expense", "#", class: "btn btn-gradient" %>
+    </div>
+
+  </div>
+</div>
