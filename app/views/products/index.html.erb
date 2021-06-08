@@ -8,9 +8,9 @@
       <h2 class='text-center'>Food</h2>
       <div class="container d-flex align-items-center justify-content-start flex-wrap">
       <% @foods.each do |product| %>
-        <div class="card-product olho-div">
+        <div class="card-product olho-div flex-grow-1">
         <% if product.photo.attached? %>
-          <%= cl_image_tag product.photo.id %>
+          <%= cl_image_tag product.photo.key %>
         <% else %>
           <%= image_tag('no-photo.jpg') %>
         <% end %>
@@ -32,9 +32,9 @@
       <h2 class='text-center mt-3'>Dessert</h2>
       <div class="container d-flex align-items-center justify-content-start flex-wrap">
       <% @desserts.each do |product| %>
-        <div class="card-product olho-div">
+        <div class="card-product olho-div flex-grow-1">
           <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.id %>
+            <%= cl_image_tag product.photo.key %>
           <% else %>
             <%= image_tag('no-photo.jpg') %>
           <% end %>
@@ -56,9 +56,9 @@
       <h2 class='text-center mt-3'>Beverage</h2>
       <div class="container d-flex align-items-center justify-content-start flex-wrap">
       <% @beverages.each do |product| %>
-        <div class="card-product olho-div">
+        <div class="card-product olho-div flex-grow-1">
           <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.id %>
+            <%= cl_image_tag product.photo.key %>
           <% else %>
             <%= image_tag('no-photo.jpg') %>
           <% end %>
