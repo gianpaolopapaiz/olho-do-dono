@@ -1,0 +1,24 @@
+<div class="olho-form-container">
+  <div class="olho-form container olho-div">
+    <h2>Add product</h2>
+
+    <%= simple_form_for([@restaurant, @product]) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    required: true %>
+        <%= f.input :description,
+                    required: true %>
+        <%= f.input :category,
+                    required: true, 
+                    collection: %w[Food Beverage Dessert] %>
+        <%= f.input :price,
+                    required: true %>
+        <%= f.input :photo, as: :file %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit class: 'olho-form-button olho-btn olho-green' %>
+      </div>
+    <% end %>
+  </div>
+</div>
