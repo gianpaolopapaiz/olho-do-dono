@@ -16,6 +16,10 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+
   def index
     @expenses = Expense.all
   end
