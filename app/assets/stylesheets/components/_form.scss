@@ -1,7 +1,8 @@
 .olho-form-container {
   display: flex;
   flex-direction: column;
-  height: 94%;
+  min-height: calc(100vh - 67px);
+  height: fit;
   align-items: center;
   justify-content: center;
   background-image: image-url("pizza.jpg");
@@ -9,6 +10,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 10px;
+  // overflow:;
 }
 
 .olho-form {
