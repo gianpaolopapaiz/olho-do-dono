@@ -1,0 +1,35 @@
+.olho-form-container {
+  display: flex;
+  flex-direction: column;
+  height: 94%;
+  align-items: center;
+  justify-content: center;
+  background-image: image-url("pizza.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
+.olho-form {
+  max-width: 380px;
+  padding: 30px;
+}
+
+.olho-form input {
+  border-radius: 10px;
+}
+
+.olho-form input:focus {
+  border-color: green;
+}
+
+.olho-form-button {
+  width: 100%;
+}
+
+.olho-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
