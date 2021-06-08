@@ -1,7 +1,5 @@
-
-<div class='olho-product-container d-flex flex-column align-items-center justify-content-center'>
-  
-  <div class="olho-div py-3 my-2">
+<div class="olho-form-container">
+  <div class="container olho-div py-3">
     <h1 class="ml-4">Products</h1>
     <%= link_to 'add product',  new_restaurant_product_path(@restaurant), class:'olho-btn olho-green ml-4' %>
     <% if @foods.length > 0 %>
