@@ -1,0 +1,40 @@
+<div class="olho-form-container">
+  <div class="container olho-div">
+    <h2>Restaurants</h2>
+    <p>Your restaurants list:</p>
+    <% if user_signed_in? %>
+     <div class="d-flex flex-wrap ">
+
+        <% @restaurants.each do |restaurant| %>
+          <div class="card mx-3 mt-3" style="width: 18rem;">
+ 
+            <% if restaurant.photo.attached? %>
+              <%= cl_image_tag restaurant.photo.key, crop: :fill %>
+            <% else %>
+              <img src="https://versatille.com/wp-content/uploads/aurelien-lemasson-theobald-CzBt4Dfk-unsplash.jpg" /> 
+            <% end %>
+
+            <div class="card-body">
+              <h5 class="card-title"><strong><%=restaurant.name%></strong></h5>
+              <br>
+              <h6 class="card-text "><strong>Endereço:</strong> <%=restaurant.address%></h6>
+              <h6 class="card-text"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
+              <br>
+              <div style="text-align: right;">
+                <%= link_to 'Edit',  edit_restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green' %>
+                <%= link_to 'Delete', restaurant_path(restaurant), method: :delete, class: 'olho-form-button olho-btn olho-red' %>
+              </div>
+            </div>
+          </div>
+       <%end%>
+      </div>
+
+      <br>
+      <br>
+      <div class="d-flex align-items-center justify-content-between">
+        <%= link_to 'New Restaurant', new_restaurant_path, class: 'olho-btn olho-green' %>
+      </div>
+
+    <%end%>    
+  </div>
+</div>
