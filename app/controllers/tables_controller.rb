@@ -6,6 +6,12 @@ class TablesController < ApplicationController
     if @restaurant.user != current_user
       redirect_to restaurants_path
     end
+    @products = @restaurant.products
+    @foods = @products.where(category: 'Food')
+    @beverages = @products.where(category: 'Beverage')
+    @desserts = @products.where(category: 'Dessert')
+    @order_item = OrderItem.new
+    @order_items = @table.order_items
   end
 
   def new
