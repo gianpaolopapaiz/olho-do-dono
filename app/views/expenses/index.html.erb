@@ -20,15 +20,15 @@
           <td><%= expense.due_date %></td>
           <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %>
 </td>
-          <td><%= link_to 'update', edit_expense_path(expense), class: 'olho-btn-card olho-green' %>
+          <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %>
 </td>
         </tr>
       <% end %>
       </tbody>
     </table>
     <div class="m-3">
-      <%= link_to "add expense", new_restaurant_expense_path, class: "btn btn-gradient" %>
-      <%= link_to "back",  restaurant_path(@restaurant), class: "btn btn-back" %>
+      <%= link_to "add expense", new_restaurant_expense_path(@restaurant), class: "btn btn-gradient" %>
+      <%= link_to "back",  restaurant_path(@restaurant), class: "btn btn-back btn-sm" %>
     </div>
 
   </div>

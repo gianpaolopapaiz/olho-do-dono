@@ -1,6 +1,6 @@
 <div class="olho-form-container">
 <div class="olho-form container olho-div">
-  <h2>New Expense</h2>
+  <h2>Edit Expense</h2>
   <%= simple_form_for(@expense) do |f| %>
     <%= f.error_notification %>
 
@@ -17,8 +17,8 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Create", class: 'olho-form-button olho-btn olho-green' %>
+      <%= f.button :submit, "Update", class: 'olho-form-button olho-btn olho-green' %>
     </div>
-    <%= link_to "back", restaurant_expenses_path(@expense.restaurant), class: "btn btn-back" %>
+    <%= link_to "back", restaurant_expenses_path(@expense.restaurant), class: "btn btn-back btn-sm" %>
   <% end %>
 </div>
