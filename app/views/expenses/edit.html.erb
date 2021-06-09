@@ -1,24 +1,25 @@
 <div class="olho-form-container">
-<div class="olho-form container olho-div">
-  <h2>Edit Expense</h2>
-  <%= simple_form_for(@expense) do |f| %>
-    <%= f.error_notification %>
+  <div class="olho-form container olho-div">
+    <h2>Edit Expense</h2>
+    <%= simple_form_for(@expense) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :description,
-                  required: true %>
-      <%= f.input :category,
-                  required: true, 
-                  collection: %w[Payroll Rent&Utilities Office Inputs] %>
-      <%= f.input :amount,
-                  required: true %>
-      <%= f.input :due_date,
-                  required: true %>
-    </div>
+      <div class="form-inputs">
+        <%= f.input :description,
+                    required: true %>
+        <%= f.input :category,
+                    required: true, 
+                    collection: %w[Payroll Rent&Utilities Office Inputs] %>
+        <%= f.input :amount,
+                    required: true %>
+        <%= f.input :due_date,
+                    required: true %>
+      </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Update", class: 'olho-form-button olho-btn olho-green' %>
-    </div>
-    <%= link_to "back", restaurant_expenses_path(@expense.restaurant), class: "btn btn-back btn-sm" %>
-  <% end %>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: 'olho-form-button olho-btn olho-green' %>
+      </div>
+      <%= link_to "back", restaurant_expenses_path(@expense.restaurant), class: "btn btn-back btn-sm" %>
+    <% end %>
+  </div>
 </div>
