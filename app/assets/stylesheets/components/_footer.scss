@@ -1,15 +1,15 @@
 .footer {
   background: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 60px;
-  padding: 0px 50px;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 15px 35px;
   color: rgba(0,0,0,0.8);
 }
 .footer-links {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 .footer-links a {
   color: rgb(136, 136, 136);
