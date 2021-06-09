@@ -1,0 +1,3 @@
+<p>Restaurant: <%= @restaurant.name %></p>
+<p>Table: <%= @number %></p>
+<%= link_to 'Start', "/restaurants/#{@restaurant.id}/spaces/#{@number}/tables/create", class: 'btn btn-primary' %>
