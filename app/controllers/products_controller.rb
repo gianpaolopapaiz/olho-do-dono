@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @products = Product.all
-    @foods = Product.all.where(category: 'Food')
-    @beverages = Product.all.where(category: 'Beverage')
-    @desserts = Product.all.where(category: 'Dessert')
+    @products = @restaurant.products
+    @foods = @products.where(category: 'Food')
+    @beverages = @products.where(category: 'Beverage')
+    @desserts = @products.where(category: 'Dessert')
   end
 
   def show
