@@ -1,0 +1,61 @@
+.star-ratings-css {
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 25px;
+    height: 25px;
+    width: 100px;
+    margin: 0 auto;
+    position: relative;
+    text-shadow: 0 1px 0 #a2a2a2;
+  } 
+  .star-ratings-css::before { 
+    content: '★★★★★';
+    opacity: .3;
+  }
+  
+  [title=".0"]::after {
+    width: 0%;
+  }
+  [title="0.1"]::after {
+    width: 10%;
+  }
+  [title="0.2"]::after {
+    width: 20%;
+  }
+  [title="0.3"]::after {
+    width: 30%;
+  }
+  [title="0.4"]::after {
+    width: 40%;
+  }
+  [title="0.5"]::after {
+    width: 50%;
+  }
+  [title="0.6"]::after {
+    width: 60%;
+  }
+  [title="0.7"]::after {
+    width: 70%;
+  }
+  [title="0.8"]::after {
+    width: 80%;
+  }
+  [title="0.9"]::after {
+    width: 90%;
+  }
+  [title="1"]::after {
+    width: 100%;
+  }
+  .star-ratings-css::after {
+    color: gold;
+    content: '★★★★★';
+    text-shadow: 0 1px 0 #ab5414;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    left: 0;
+    top:0;
+    width: attr(rating);
+    overflow: hidden;
+  }
+  
