@@ -1,0 +1,4 @@
+<p><%= @restaurant.name %></p>
+<p>Table: <%= @table.number %></p>
+<p>Status: <%= @table.status %></p>
+<%= link_to 'Close', "/restaurants/#{@restaurant.id}/tables/#{@table.id}/close" %>
