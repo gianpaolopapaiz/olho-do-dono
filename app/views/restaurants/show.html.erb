@@ -16,7 +16,7 @@
                     <p><strong>Address: </strong><%= @restaurant.address %></p>
                     <p><strong>Phone: </strong><%= @restaurant.phone %></p>
                     <br>
-                    <p><strong># of tables:</strong> 16</p>
+                    <p><strong># of tables:</strong> <%= @restaurant.nbr_of_tables %></p>
                     
                 </div>      
                 <div class="star-div col-2">
@@ -31,9 +31,9 @@
         </div>
     </div>
     <div class="text-right">
-       <%= link_to 'Edit',  edit_restaurant_path(@restaurant), class: 'olho-form-button olho-btn olho-green' %>
-       <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'olho-form-button olho-btn olho-red' %>
-       <%= link_to 'Back', restaurants_path, class: 'olho-btn olho-green btn-sm'  %>
+       <%= link_to 'Edit',  edit_restaurant_path(@restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
+       <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'olho-form-button olho-btn olho-red btn-sm' %>
+       <%= link_to 'Back', restaurants_path, class: 'btn btn-back btn-sm'  %>
     </div>
     <br>
   </div>
@@ -45,7 +45,7 @@
 
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Revenue</strong></h5>
+                <h5 class="card-title text-center"><strong>Revenue & Cash-flow</strong></h5>
                 <br>
                 <h6><strong>Day:</strong> R$ 3.530,00</h6>
                 <h6> <strong> Month:</strong>  R$ 42.300,00 </h6> 
@@ -103,9 +103,9 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Customers</strong></h5>
                 <br>
-                <h6 class="card-text "><strong>Day:</strong> 50</h6>
-                <h6 class="card-text "><strong>Month:</strong> 400</h6>
-                <h6 class="card-text "><strong>Average:</strong> 55</h6>
+                <h6 class="card-text "><strong>Today:</strong> 50</h6>
+                <h6 class="card-text "><strong>Daily:</strong> 65</h6>
+                <h6 class="card-text "><strong>Monthly:</strong> 400</h6>
             </div>
         </div>
 
