@@ -16,9 +16,8 @@
                     <p><strong>Address: </strong><%= @restaurant.address %></p>
                     <p><strong>Phone: </strong><%= @restaurant.phone %></p>
                     <br>
-                    <p><strong>Revenue of the day:</strong> R$ 3.530,00 | <strong> Month:</strong>  R$ 42.300,00 </p> 
-                    <p><strong>Customers of the day:</strong> 32 | <strong> Month:</strong> 254 </p>
-                    <p><strong>Cash-In of the Month :</strong> R$ 75.200,00 | <strong>Cash-Out of the Month :</strong> R$ 48.100,00</p>
+                    <p><strong># of tables:</strong> 16</p>
+                    
                 </div>      
                 <div class="star-div col-2">
                     <% if @restaurant.rating_avg %>
@@ -32,48 +31,34 @@
         </div>
     </div>
     <div class="text-right">
-        <%= link_to 'Back', restaurants_path, class: 'olho-btn olho-green btn-sm'  %>
+       <%= link_to 'Edit',  edit_restaurant_path(@restaurant), class: 'olho-form-button olho-btn olho-green' %>
+       <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'olho-form-button olho-btn olho-red' %>
+       <%= link_to 'Back', restaurants_path, class: 'olho-btn olho-green btn-sm'  %>
     </div>
     <br>
   </div>
   <br>
 
   <div class="container olho-div">
-    <div class="d-flex flex-wrap ">
+    <div class="d-flex flex-wrap justify-content-center">
 
-        <div class="card mx-3 mt-3" style="width: 13rem;">
+
+        <div class="card mx-3 mt-3" style="width: 20rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Tables</strong></h5>
+                <h5 class="card-title text-center"><strong>Revenue</strong></h5>
                 <br>
-                <h6 class="card-text "><strong># of tables:</strong> 16</h6>
-                <br>
-                <br>
-                <br>
+                <h6><strong>Day:</strong> R$ 3.530,00</h6>
+                <h6> <strong> Month:</strong>  R$ 42.300,00 </h6> 
+                <h6><strong>Cash-In of the Month :</strong> R$ 75.200,00 </h6> 
+                <h6><strong>Cash-Out of the Month :</strong> R$ 48.100,00</h6>
                 <br>
                 <div style="text-align: right;">
-                <%= link_to 'Add',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
-                <%= link_to 'Delete', '#', class: 'olho-btn olho-red  btn-sm' %>
+                <%= link_to 'Show',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
                 </div>
             </div>
         </div>
 
-        <div class="card mx-3 mt-3" style="width: 14rem;">
-            <div class="card-body">
-                <h5 class="card-title text-center"><strong>Menu</strong></h5>
-                <br>
-                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
-                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
-                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
-                <br>
-                <br>
-                <div style="text-align: right;">
-                <%= link_to 'Add',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
-                <%= link_to 'Delete', '#', class: 'olho-btn olho-red  btn-sm' %>
-                </div>
-            </div>
-        </div>
-
-        <div class="card mx-3 mt-3" style="width: 16rem;">
+        <div class="card mx-3 mt-3" style="width: 20rem;">
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Expenses</strong></h5>
                 <br>
@@ -83,15 +68,14 @@
                 <h6 class="card-text "><strong>Inputs:</strong> R$ 12.500,00</h6>
                 <br>
                 <div style="text-align: right;">
-                <%= link_to 'Add',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
-                <%= link_to 'Delete', '#', class: 'olho-btn olho-red  btn-sm' %>
+                <%= link_to 'Show',  restaurant_expenses_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
                 </div>
             </div>
         </div>
 
-        <div class="card mx-3 mt-3" style="width: 18rem;">
+        <div class="card mx-3 mt-3" style="width: 20rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Kitchen</strong></h5>
+                <h5 class="card-title text-center"><strong>Kitchen Menu</strong></h5>
                 <br>
                 <h6 class="card-text "><strong>Top Food:</strong> Pizza Calabresa (192)</h6>
                 <h6 class="card-text "><strong>Top Beverage:</strong> Cerveja (143)</h6>
@@ -99,17 +83,74 @@
                 <h6 class="card-text "><strong>Average prep time:</strong> 25 min</h6>
                 <br>
                 <div style="text-align: right;">
-                <%= link_to 'Add',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
-                <%= link_to 'Delete', '#', class: 'olho-btn olho-red  btn-sm' %>
+                <%= link_to 'Show',  restaurant_products_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
                 </div>
             </div>
         </div>
 
     </div>
     <br>
+  </div>
+
+<br>
+
+  <div class="container olho-div">
+    <div class="d-flex flex-wrap justify-content-center">
 
 
 
+        <div class="card mx-3 mt-3" style="width: 11rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Customers</strong></h5>
+                <br>
+                <h6 class="card-text "><strong>Day:</strong> 50</h6>
+                <h6 class="card-text "><strong>Month:</strong> 400</h6>
+                <h6 class="card-text "><strong>Average:</strong> 55</h6>
+            </div>
+        </div>
+
+        <div class="card mx-3 mt-3" style="width: 11rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Menu</strong></h5>
+                <br>
+                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
+                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
+                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
+            </div>
+        </div>
+
+        <div class="card mx-3 mt-3" style="width: 11rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Tables</strong></h5>
+                <br>
+                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
+                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
+                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
+            </div>
+        </div>
+
+        <div class="card mx-3 mt-3" style="width: 11rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Ratings</strong></h5>
+                <br>
+                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
+                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
+                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
+            </div>
+        </div>
+
+        <div class="card mx-3 mt-3" style="width: 11rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Ratings</strong></h5>
+                <br>
+                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
+                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
+                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
+            </div>
+        </div>
+        
+    </div>
+    <br>
   </div>
 
 

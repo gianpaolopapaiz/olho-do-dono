@@ -3,7 +3,7 @@
     <h2>Restaurants</h2>
     <p>Your restaurants list:</p>
     <% if user_signed_in? %>
-     <div class="d-flex flex-wrap ">
+      <div class="d-flex flex-wrap ">
 
         <% @restaurants.each do |restaurant| %>
           <div class="card mx-3 mt-3" style="width: 18rem;">
@@ -22,8 +22,6 @@
               <br>
               <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green' %>
-                <%= link_to 'Edit',  edit_restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green' %>
-                <%= link_to 'Delete', restaurant_path(restaurant), method: :delete, class: 'olho-form-button olho-btn olho-red' %>
               </div>
             </div>
           </div>
