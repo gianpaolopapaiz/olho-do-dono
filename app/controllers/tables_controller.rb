@@ -13,6 +13,7 @@ class TablesController < ApplicationController
     @desserts = @products.where(category: 'Dessert')
     @order_item = OrderItem.new
     @order_items = @table.order_items
+    @sum = @order_items
   end
 
   def new
@@ -30,20 +31,20 @@ class TablesController < ApplicationController
       flash[:alert] = 'Not authorized'
       redirect_to restaurants_path
     end
-    @number = params[:number]
+    number = params[:number]
     table = Table.new
     table.restaurant = restaurant
     table.number = @number
     table.status = 'open'
-    @message = ''
-    if restaurant.tables.where("number = #{@number} AND status = 'open'").length > 0
-      @message = 'Table has open session already!'
+    if restaurant.tables.where("number = #{number} AND status = 'open'").length > 0
+      flash[:alert] = 'Table already has an open session'
+      redirect_to "/restaurants/#{restaurant.id}/spaces/#{number}/tables/new"
     else
       if table.save
-        redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/#{table.id}"
+        redirect_to "/restaurants/#{restaurant.id}/spaces/#{number}/tables/#{table.id}"
       else
         flash[:alert] = 'Something went wrong'
-        redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/new"
+        redirect_to "/restaurants/#{restaurant.id}/spaces/#{number}/tables/new"
       end
     end
   end

@@ -19,8 +19,8 @@
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
             <a class="nav-item nav-link" id="nav-food-tab" data-toggle="tab" href="#nav-food" role="tab" aria-controls="nav-food" aria-selected="false">Food</a>
-            <a class="nav-item nav-link" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false">Dessert</a>
             <a class="nav-item nav-link" id="nav-beverage-tab" data-toggle="tab" href="#nav-beverage" role="tab" aria-controls="nav-beverage" aria-selected="false">Beverage</a>
+            <a class="nav-item nav-link" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false">Dessert</a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -39,18 +39,11 @@
                       <p><%= product.description %></p>
                       <p><strong>$<%= product.price %></strong></p>
                       <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                      
                         <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
-                          <%# <div class="form-inputs"> %>
                             <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                             <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                          <%# </div> %>
-                          <%# <div class="form-actions"> %>
                             <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
-                          <%# </div> %>
                         <% end %>
-                      
-                        
                       </div>
                     </div>
                   </div>
@@ -62,29 +55,6 @@
             <% if @foods.length > 0 %>
               <div class=" d-flex align-items-center justify-content-start flex-wrap container">
                 <% @foods.each do |product| %>
-                  <div class="card-product olho-div flex-grow-1">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key %>
-                  <% else %>
-                    <%= image_tag('no-photo.jpg') %>
-                  <% end %>
-                    <div class="card-product-infos">
-                      <h2><%= product.name %></h2>
-                      <p><%= product.description %></p>
-                      <p><strong>$<%= product.price %></strong></p>
-                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                        <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-              </div>  
-            <% end %>
-          </div>
-          <div class="tab-pane fade" id="nav-dessert" role="tabpanel" aria-labelledby="nav-dessert-tab">
-            <% if @desserts.length > 0 %>
-              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
-                <% @desserts.each do |product| %>
                   <div class="card-product olho-div flex-grow-1">
                   <% if product.photo.attached? %>
                     <%= cl_image_tag product.photo.key %>
@@ -127,8 +97,30 @@
               </div>  
             <% end %> 
           </div>
+           <div class="tab-pane fade" id="nav-dessert" role="tabpanel" aria-labelledby="nav-dessert-tab">
+            <% if @desserts.length > 0 %>
+              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
+                <% @desserts.each do |product| %>
+                  <div class="card-product olho-div flex-grow-1">
+                  <% if product.photo.attached? %>
+                    <%= cl_image_tag product.photo.key %>
+                  <% else %>
+                    <%= image_tag('no-photo.jpg') %>
+                  <% end %>
+                    <div class="card-product-infos">
+                      <h2><%= product.name %></h2>
+                      <p><%= product.description %></p>
+                      <p><strong>$<%= product.price %></strong></p>
+                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+                        <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>  
+            <% end %>
+          </div>
         </div>
-
       </div>
 
       <div class='olho-div py-3 p-3'>
@@ -141,7 +133,7 @@
             <p>Total</p>
             <p>Status</p>
             <p></p>
-
+            
           <% @order_items.each do |order_item| %>
             <p><%= order_item.product.name %></p>
             <p class='ml-2'><%= order_item.product_quantity %></p>
@@ -149,17 +141,20 @@
             <p><%= number_to_currency(order_item.product.price * order_item.product_quantity) %></p>
             <p><%= order_item.status %></p>
             <% if order_item.status = 'placed' %>
-              <%= link_to 'X', '#', class: 'olho-color-red'  %>
+              <%= link_to 'X', order_item_path(order_item), class: 'olho-color-red', method: :delete, data: { confirm: "Are you sure?" } %>
             <% else %>
               <p></p>
             <% end %>
           <% end %>
         
         </div>
+        <div class='w-100 text-right' style='height: fill'>
+          <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
+
+          <%= link_to 'Checkout', "/restaurants/#{@restaurant.id}/tables/#{@table.id}/close", class: 'olho-form-button olho-btn olho-red w-100' %>
+        </div>
       </div>
 
     </div>
-  </div>
-      
-      <%= link_to 'Close', "/restaurants/#{@restaurant.id}/tables/#{@table.id}/close" %>
+  </div>  
 </div>
