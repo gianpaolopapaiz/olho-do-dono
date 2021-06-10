@@ -19,6 +19,20 @@
   padding: 10px;
 }
 
+.olho-container-kitchen {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 67px);
+  height: fit;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://blog.castellmaq.com.br/wp-content/uploads/2017/10/127712-como-evitar-acidente-de-trabalho-em-cozinha-industrial-999x640.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
 .div-90 {
   width: 85%;
   height: 80vh;

@@ -1,0 +1,29 @@
+<div class="olho-container-kitchen">
+  <div class="olho-div p-2">
+    <table class="table">
+      <h2 class="m-3"><strong>Order Kitchen Management</strong></h2>
+        <thead>
+          <tr>
+            <th scope="col">Table</th>
+            <th scope="col">Product</th>
+            <th scope="col">Qtd</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_items.each do |order_items| %>
+            <tr>
+              <td><%= order_item.table %></td>
+              <td><%= order_item.product %></td>
+              <td><%= order_item.qtd %></td>
+              <td></td>
+              <td><%= link_to 'placed', "#", class: 'btn btn-outline-primary btn-sm' %></td>
+              <td><%= link_to 'preparing', "#", class: 'btn btn-outline-warning btn-sm' %></td>
+              <td><%= link_to 'ready', "#", class: 'btn btn-outline-success btn-sm' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <td><%= link_to "back", "#", class: 'btn btn-back btn-sm' %></td>
+    </table>
+  </div>
+</div>
