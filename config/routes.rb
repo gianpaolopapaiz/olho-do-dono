@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :tables, only: [ :index ]
     resources :products, only: [ :index, :show, :new, :create ]
     resources :expenses, only: [ :index, :show, :new, :create ]
+    resources :order_items, only: [:index]
     get '/spaces/:number/tables/new', to: 'tables#new', as: 'table_new'
     get '/spaces/:number/tables/create', to: 'tables#create', as: 'table_create'
     get '/spaces/:number/tables/:id', to: 'tables#show', as: 'table_show'
