@@ -34,7 +34,7 @@ class TablesController < ApplicationController
     number = params[:number]
     table = Table.new
     table.restaurant = restaurant
-    table.number = @number
+    table.number = number
     table.status = 'open'
     if restaurant.tables.where("number = #{number} AND status = 'open'").length > 0
       flash[:alert] = 'Table already has an open session'
