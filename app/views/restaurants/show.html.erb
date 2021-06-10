@@ -47,11 +47,11 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Revenue & Cash-flow</strong></h5>
                 <br>
-                <h6><strong>Day:</strong> R$ 3.530,00</h6>
-                <h6> <strong> Month:</strong>  R$ 42.300,00 </h6> 
+                <h6 style = "color: green"><strong>Day:</strong> <%= number_to_currency(@day_amount)  %> </h6>
+                <h6 style = "color: green"> <strong> Month:</strong> <%= number_to_currency(@month_amount) %> </h6> 
+                <h6 style = "color: green"> <strong> Year:</strong>  <%= number_to_currency(@year_amount) %> </h6> 
                 <h6><strong>Cash-In of the Month :</strong> R$ 75.200,00 </h6> 
                 <h6><strong>Cash-Out of the Month :</strong> R$ 48.100,00</h6>
-                <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  '#', class: 'olho-form-button olho-btn olho-green  btn-sm' %>
                 </div>
@@ -60,12 +60,12 @@
 
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Expenses</strong></h5>
+                <h5 class="card-title text-center"><strong>Open Expenses</strong></h5>
                 <br>
-                <h6 class="card-text "><strong>Payroll:</strong> R$ 15.300,00</h6>
-                <h6 class="card-text "><strong>Rent & Utilities:</strong> R$ 4.400,00</h6>
-                <h6 class="card-text "><strong>Office:</strong> R$ 2.500,00</h6>
-                <h6 class="card-text "><strong>Inputs:</strong> R$ 12.500,00</h6>
+                <h6 class="card-text" style = "color: green"><strong>Payroll:</strong> <%= number_to_currency(@expense_hash['Payroll']) %></h6>
+                <h6 class="card-text" style = "color: green"><strong>Rent & Utilities:</strong> <%= number_to_currency(@expense_hash['Rent&Utilities']) %></h6>
+                <h6 class="card-text" style = "color: green"><strong>Office:</strong> <%= number_to_currency(@expense_hash['Office']) %></h6>
+                <h6 class="card-text" style = "color: green"><strong>Inputs:</strong> <%= number_to_currency(@expense_hash['Inputs']) %></h6>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_expenses_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
@@ -101,11 +101,11 @@
 
         <div class="card mx-3 mt-3" style="width: 11rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Customers</strong></h5>
+                <h5 class="card-title text-center"><strong>Orders</strong></h5>
                 <br>
-                <h6 class="card-text "><strong>Today:</strong> 50</h6>
-                <h6 class="card-text "><strong>Daily:</strong> 65</h6>
-                <h6 class="card-text "><strong>Monthly:</strong> 400</h6>
+                <h6 class="card-text " style = "color: green"><strong>Day:</strong> <%= @day_order_qty %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Month:</strong> <%= @month_order_qty %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Year:</strong> <%= @year_order_qty %></h6>
             </div>
         </div>
 
@@ -113,9 +113,9 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Menu</strong></h5>
                 <br>
-                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
-                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
-                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
+                <h6 class="card-text " style = "color: green"><strong>Foods:</strong> <%= @nbr_foods %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Beverages:</strong> <%= @nbr_beverages %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Desserts:</strong> <%= @nbr_desserts %></h6>
             </div>
         </div>
 
