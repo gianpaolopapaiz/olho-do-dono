@@ -1,4 +1,7 @@
 class OrderItemsController < ApplicationController
+  def index
+  end
+  
   def create
     order_item = OrderItem.new
     table = Table.find(params[:table_id])
