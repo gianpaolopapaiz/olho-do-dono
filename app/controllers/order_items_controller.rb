@@ -1,5 +1,8 @@
 class OrderItemsController < ApplicationController
   def index
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    redirect_to restaurants_path if @restaurant.user != current_user
+    @order_items = @restaurant.order_items
   end
   
   def create
