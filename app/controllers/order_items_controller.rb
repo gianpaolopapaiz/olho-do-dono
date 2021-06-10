@@ -16,4 +16,12 @@ class OrderItemsController < ApplicationController
     end
     redirect_to "/restaurants/#{table.restaurant.id}/spaces/#{table.number}/tables/#{table.id}"
   end
+
+  def destroy
+    order_item = OrderItem.find(params[:id])
+    if !order_item.destroy
+      flash[:alert] = 'Something went wrong'
+    end
+    redirect_to "/restaurants/#{order_item.table.restaurant.id}/spaces/#{order_item.table.number}/tables/#{order_item.table.id}"
+  end
 end
