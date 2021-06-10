@@ -1,3 +1,7 @@
-<p>Restaurant: <%= @restaurant.name %></p>
-<p>Table: <%= @number %></p>
-<%= link_to 'Start', "/restaurants/#{@restaurant.id}/spaces/#{@number}/tables/create", class: 'btn btn-primary' %>
+<div class="olho-form-container">
+  <div class="container olho-div text-center p-5">
+  <h1 class='start-welcome'>Welcome to </h1>
+  <h1 class='start-title mb-5'><%= @restaurant.name %></h1>
+  <%= link_to 'Start', "/restaurants/#{@restaurant.id}/spaces/#{@number}/tables/create", class: 'olho-btn-ggg olho-green' %>
+  </div>
+</div>
