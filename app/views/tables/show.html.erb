@@ -1,7 +1,7 @@
 <div class="olho-container-table">
   <div class="olho-div div-90 p-4">
     <div class= "olho-grid-container">
-      <div class='border'>
+      <div class=''>
 
         <% if @restaurant.photo.attached? %>
           <%= cl_image_tag @restaurant.photo.key %>
@@ -133,11 +133,24 @@
 
       <div class='olho-div py-3 p-3'>
         <h2 class='text-center'>Bill</h2>
-        <p></p>
-        <div class='h-75 overflow-auto'>
+        
+        <div class='olho-grid-container-bill'>
+            <p>Item</p>
+            <p>Qnt</p>
+            <p>Unit</p>
+            <p>Total</p>
+            <p>Status</p>
+            <p></p>
+
           <% @order_items.each do |order_item| %>
-            <p><%= order_item.product.name %> <%= order_item.product_quantity %></p>
+            <p><%= order_item.product.name %></p>
+            <p class='ml-2'><%= order_item.product_quantity %></p>
+            <p><%= number_to_currency(order_item.product.price) %></p>
+            <p><%= number_to_currency(order_item.product.price * order_item.product_quantity) %></p>
+            <p>Waiting</p>
+            <%= link_to 'X', '#', class: 'olho-color-red'  %>
           <% end %>
+        
         </div>
       </div>
 
