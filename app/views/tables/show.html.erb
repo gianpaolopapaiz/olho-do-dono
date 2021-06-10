@@ -13,115 +13,144 @@
         <p>Status: <%= @table.status %></p>
       </div>
 
-      <div class='olho-div py-3 overflow-auto'>
-        <h2 class='text-center'>Menu</h2>
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
-            <a class="nav-item nav-link" id="nav-food-tab" data-toggle="tab" href="#nav-food" role="tab" aria-controls="nav-food" aria-selected="false">Food</a>
-            <a class="nav-item nav-link" id="nav-beverage-tab" data-toggle="tab" href="#nav-beverage" role="tab" aria-controls="nav-beverage" aria-selected="false">Beverage</a>
-            <a class="nav-item nav-link" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false">Dessert</a>
-          </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
-            <% if @products.length > 0 %>
-              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
-                <% @products.each do |product| %>
-                  <div class="card-product olho-div flex-grow-1">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key %>
-                  <% else %>
-                    <%= image_tag('no-photo.jpg') %>
-                  <% end %>
-                    <div class="card-product-infos">
-                      <h2><%= product.name %></h2>
-                      <p><%= product.description %></p>
-                      <p><strong>$<%= product.price %></strong></p>
-                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                        <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
-                            <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
-                            <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                            <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
-                        <% end %>
+      <% if !@table.payment_type %>
+      
+        <div class='olho-div py-3 overflow-auto'>
+          <h2 class='text-center'>Menu</h2>
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
+              <a class="nav-item nav-link" id="nav-food-tab" data-toggle="tab" href="#nav-food" role="tab" aria-controls="nav-food" aria-selected="false">Food</a>
+              <a class="nav-item nav-link" id="nav-beverage-tab" data-toggle="tab" href="#nav-beverage" role="tab" aria-controls="nav-beverage" aria-selected="false">Beverage</a>
+              <a class="nav-item nav-link" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false">Dessert</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+              <% if @products.length > 0 %>
+                <div class=" d-flex align-items-center justify-content-start flex-wrap container">
+                  <% @products.each do |product| %>
+                    <div class="card-product olho-div flex-grow-1">
+                    <% if product.photo.attached? %>
+                      <%= cl_image_tag product.photo.key %>
+                    <% else %>
+                      <%= image_tag('no-photo.jpg') %>
+                    <% end %>
+                      <div class="card-product-infos">
+                        <h2><%= product.name %></h2>
+                        <p><%= product.description %></p>
+                        <p><strong>$<%= product.price %></strong></p>
+                        <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+                          <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
+                              <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
+                              <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>  
-            <% end %>
-          </div>
-          <div class="tab-pane fade" id="nav-food" role="tabpanel" aria-labelledby="nav-food-tab">
-            <% if @foods.length > 0 %>
-              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
-                <% @foods.each do |product| %>
-                  <div class="card-product olho-div flex-grow-1">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key %>
-                  <% else %>
-                    <%= image_tag('no-photo.jpg') %>
                   <% end %>
-                    <div class="card-product-infos">
-                      <h2><%= product.name %></h2>
-                      <p><%= product.description %></p>
-                      <p><strong>$<%= product.price %></strong></p>
-                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                        <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                </div>  
+              <% end %>
+            </div>
+            <div class="tab-pane fade" id="nav-food" role="tabpanel" aria-labelledby="nav-food-tab">
+              <% if @foods.length > 0 %>
+                <div class=" d-flex align-items-center justify-content-start flex-wrap container">
+                  <% @foods.each do |product| %>
+                    <div class="card-product olho-div flex-grow-1">
+                    <% if product.photo.attached? %>
+                      <%= cl_image_tag product.photo.key %>
+                    <% else %>
+                      <%= image_tag('no-photo.jpg') %>
+                    <% end %>
+                      <div class="card-product-infos">
+                        <h2><%= product.name %></h2>
+                        <p><%= product.description %></p>
+                        <p><strong>$<%= product.price %></strong></p>
+                        <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>  
-            <% end %>
-          </div>
-          <div class="tab-pane fade" id="nav-beverage" role="tabpanel" aria-labelledby="nav-beverage-tab">
-            <% if @beverages.length > 0 %>
-              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
-                <% @beverages.each do |product| %>
-                  <div class="card-product olho-div flex-grow-1">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key %>
-                  <% else %>
-                    <%= image_tag('no-photo.jpg') %>
                   <% end %>
-                    <div class="card-product-infos">
-                      <h2><%= product.name %></h2>
-                      <p><%= product.description %></p>
-                      <p><strong>$<%= product.price %></strong></p>
-                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                        <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                </div>  
+              <% end %>
+            </div>
+            <div class="tab-pane fade" id="nav-beverage" role="tabpanel" aria-labelledby="nav-beverage-tab">
+              <% if @beverages.length > 0 %>
+                <div class=" d-flex align-items-center justify-content-start flex-wrap container">
+                  <% @beverages.each do |product| %>
+                    <div class="card-product olho-div flex-grow-1">
+                    <% if product.photo.attached? %>
+                      <%= cl_image_tag product.photo.key %>
+                    <% else %>
+                      <%= image_tag('no-photo.jpg') %>
+                    <% end %>
+                      <div class="card-product-infos">
+                        <h2><%= product.name %></h2>
+                        <p><%= product.description %></p>
+                        <p><strong>$<%= product.price %></strong></p>
+                        <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>  
-            <% end %> 
-          </div>
-           <div class="tab-pane fade" id="nav-dessert" role="tabpanel" aria-labelledby="nav-dessert-tab">
-            <% if @desserts.length > 0 %>
-              <div class=" d-flex align-items-center justify-content-start flex-wrap container">
-                <% @desserts.each do |product| %>
-                  <div class="card-product olho-div flex-grow-1">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key %>
-                  <% else %>
-                    <%= image_tag('no-photo.jpg') %>
                   <% end %>
-                    <div class="card-product-infos">
-                      <h2><%= product.name %></h2>
-                      <p><%= product.description %></p>
-                      <p><strong>$<%= product.price %></strong></p>
-                      <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                        <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                </div>  
+              <% end %> 
+            </div>
+            <div class="tab-pane fade" id="nav-dessert" role="tabpanel" aria-labelledby="nav-dessert-tab">
+              <% if @desserts.length > 0 %>
+                <div class=" d-flex align-items-center justify-content-start flex-wrap container">
+                  <% @desserts.each do |product| %>
+                    <div class="card-product olho-div flex-grow-1">
+                    <% if product.photo.attached? %>
+                      <%= cl_image_tag product.photo.key %>
+                    <% else %>
+                      <%= image_tag('no-photo.jpg') %>
+                    <% end %>
+                      <div class="card-product-infos">
+                        <h2><%= product.name %></h2>
+                        <p><%= product.description %></p>
+                        <p><strong>$<%= product.price %></strong></p>
+                        <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>  
-            <% end %>
+                  <% end %>
+                </div>  
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+
+      <% elsif @table.payment_type && @table.status == 'open' %>
+        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+          <div class='olho-div olho-form olho-green text-white text-center'>
+           <h1>Waiting for Payment Confirmation</h1>
+          </div>
+        </div>
+      <% else %>
+        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+          <div class='olho-div olho-form'>
+          <%= simple_form_for(@table) do |f| %>
+          <h2 class='text-center'>Rate us</h2>
+            <div class="form-inputs">
+              <%= f.input :rating,
+                          required: true,
+                          collection: %w[Credit Debit Cash] %>
+              <%= f.input :comment %>
+            </div>
+            <div class="form-actions">
+              <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3' %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+        
 
       <div class='olho-div py-3 p-3'>
         <h2 class='text-center'>Bill</h2>
@@ -150,11 +179,47 @@
         </div>
         <div class='w-100 text-right' style='height: fill'>
           <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
+          <!-- Button trigger modal -->
+          
+          <% if !@table.payment_type %>
+            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
+            Checkout
+            </button>
+          <% else %>
+            <p>Waiting for payment confirmation...</p>
+          <% end %>
+          
 
-          <%= link_to 'Checkout', "/restaurants/#{@restaurant.id}/tables/#{@table.id}/close", class: 'olho-form-button olho-btn olho-red w-100' %>
+          <!-- Modal -->
+          <div class="modal fade" id="CheckoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog h-100 d-flex align-items-center justify-content-center" role="document">
+              <div class="modal-content olho-div">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                 <div class="olho-form container text-center">
+                  <h3 class='mb-4'>Payment Method</h3>
+                  <%= simple_form_for(@table) do |f| %>
+                    <div class="form-inputs">
+                      <%= f.input :payment_type,
+                                  required: true,
+                                  as: :radio_buttons,
+                                  label: 'Choose an option:',
+                                  collection: %w[Credit Debit Cash] %>
+                    </div>
+                    <div class="form-actions">
+                      <%= f.submit 'PAY', class: 'olho-form-button olho-btn olho-green mt-3' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>  
 </div>
