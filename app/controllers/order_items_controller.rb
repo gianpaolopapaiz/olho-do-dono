@@ -10,7 +10,10 @@ class OrderItemsController < ApplicationController
     order_item.product_quantity = product_quantity
     order_item.product = product
     order_item.table = table
-    order_item.save
+    order_item.status = 'placed'
+    if !order_item.save
+      flash[:alert] = 'Something went wrong'
+    end
     redirect_to "/restaurants/#{table.restaurant.id}/spaces/#{table.number}/tables/#{table.id}"
   end
 end

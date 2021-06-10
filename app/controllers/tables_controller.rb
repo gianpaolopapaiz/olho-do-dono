@@ -4,6 +4,7 @@ class TablesController < ApplicationController
     @table = Table.find(params[:id])
     @restaurant = Restaurant.find(params[:restaurant_id])
     if @restaurant.user != current_user
+      flash[:alert] = 'Not authorized'
       redirect_to restaurants_path
     end
     @products = @restaurant.products
@@ -17,6 +18,7 @@ class TablesController < ApplicationController
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
     if @restaurant.user != current_user
+      flash[:alert] = 'Not authorized'
       redirect_to restaurants_path
     end
     @number = params[:number]
@@ -25,6 +27,7 @@ class TablesController < ApplicationController
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
     if restaurant.user != current_user
+      flash[:alert] = 'Not authorized'
       redirect_to restaurants_path
     end
     @number = params[:number]
@@ -39,7 +42,8 @@ class TablesController < ApplicationController
       if table.save
         redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/#{table.id}"
       else
-        @message = 'Opening table error!'
+        flash[:alert] = 'Something went wrong'
+        redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/new"
       end
     end
   end
@@ -55,7 +59,8 @@ class TablesController < ApplicationController
     if table.save
       redirect_to "/restaurants/#{restaurant.id}/spaces/#{number}/tables/new"
     else
-      render :show
+      flash[:alert] = 'Something went wrong'
+      redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/#{table.id}"
     end
   end
 

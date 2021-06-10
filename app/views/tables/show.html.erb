@@ -147,8 +147,12 @@
             <p class='ml-2'><%= order_item.product_quantity %></p>
             <p><%= number_to_currency(order_item.product.price) %></p>
             <p><%= number_to_currency(order_item.product.price * order_item.product_quantity) %></p>
-            <p>Waiting</p>
-            <%= link_to 'X', '#', class: 'olho-color-red'  %>
+            <p><%= order_item.status %></p>
+            <% if order_item.status = 'placed' %>
+              <%= link_to 'X', '#', class: 'olho-color-red'  %>
+            <% else %>
+              <p></p>
+            <% end %>
           <% end %>
         
         </div>
