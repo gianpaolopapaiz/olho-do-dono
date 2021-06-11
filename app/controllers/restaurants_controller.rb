@@ -52,7 +52,6 @@ class RestaurantsController < ApplicationController
     dessert_qty_hash = dessert_qty_hash.sort_by {|k,v| v}.reverse    
     dessert_amount_hash = dessert_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
     dessert_amount_hash = dessert_amount_hash.sort_by {|k,v| v}.reverse
-
     @item1 = ""
     @item2 = ""
     @item3 = ""
@@ -81,6 +80,7 @@ class RestaurantsController < ApplicationController
   end
 
   def cashflow
+    @restaurant = Restaurant.find(params[:restaurant_id])
     
   end
 

@@ -12,6 +12,25 @@
         <p><%= @restaurant.name %></p>
         <p>Table: <%= @table.number %></p>
         <p>Status: <%= @table.status %></p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Have you ever tried this? </p>
+        <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover;">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
       </div>
 
       <!-- Column 2 -->
@@ -42,7 +61,7 @@
                       <div class="card-product-infos">
                         <h2><%= product.name %></h2>
                         <p><%= product.description %></p>
-                        <p><strong>$<%= product.price %></strong></p>
+                        <p><strong><%= number_to_currency(product.price) %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
@@ -70,7 +89,7 @@
                       <div class="card-product-infos">
                         <h2><%= product.name %></h2>
                         <p><%= product.description %></p>
-                        <p><strong>$<%= product.price %></strong></p>
+                        <p><strong><%= number_to_currency(product.price) %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
@@ -98,7 +117,7 @@
                       <div class="card-product-infos">
                         <h2><%= product.name %></h2>
                         <p><%= product.description %></p>
-                        <p><strong>$<%= product.price %></strong></p>
+                        <p><strong><%= number_to_currency(product.price) %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
@@ -126,7 +145,7 @@
                       <div class="card-product-infos">
                         <h2><%= product.name %></h2>
                         <p><%= product.description %></p>
-                        <p><strong>$<%= product.price %></strong></p>
+                        <p><strong><%= number_to_currency(product.price) %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
