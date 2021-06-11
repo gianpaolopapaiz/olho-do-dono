@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/spaces/:number/tables/create', to: 'tables#create', as: 'table_create'
     get '/spaces/:number/tables/:id', to: 'tables#show', as: 'table_show'
     get '/tables/:id/close', to: 'tables#close', as: 'table_close'
+    get '/cashflow', to: 'restaurants#cashflow', as: 'cashflow'
   end
   resources :tables, only: [:update] do
     resources :order_items, only: [:create]
