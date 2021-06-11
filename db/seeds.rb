@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+  # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -109,7 +109,38 @@ def insert_products(rest)
     produto.photo.attach(io: File.open(photo_path), filename: 'photo10.jpg', content_type: 'image/jpg')
     produto.save
     puts "Product #{produto.id} - #{produto.name} created"
+end
 
+
+def insert_tables(rest)
+	t1 = Time.parse("2021-01-02 12:00:00")
+	t2 = Time.parse("2021-06-10 23:00:00")
+	#table
+	20.times do
+		8.times do |index|
+			puts "Adding table to space #{index + 1}"
+			table = Table.new()
+			table.restaurant = rest
+			table.number = index + 1
+			table.payment_type = %w[Credit Debit Cash].sample
+			table.rating = %i[1 2 3 4 5].sample
+			table.comment = 'Comment'
+			table.status = 'closed'
+			table.save
+			table.updated_at = rand(t1..t2)
+			table.save
+			#order_items
+			5.times do
+				puts 'Adding items to table'
+				order_item = OrderItem.new()
+				order_item.table = table
+				order_item.product = rest.products.sample
+				order_item.product_quantity = rand(1..3)
+				order_item.status = 'paid'
+				order_item.save
+			end
+		end
+	end
 end
 
 puts "Cleaning database..."
@@ -145,79 +176,80 @@ restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', con
 restaurante.save
 puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 insert_products(restaurante.id)
+insert_tables(restaurante)
 
-restaurante = Restaurant.new()
-restaurante.name = '1900 - Morumbi'
-restaurante.address = 'R. Dr. Fonseca Brasil, 282 - Morumbi, São Paulo - SP, 05716-060'
-restaurante.phone = '(11) 5575-1900'
-restaurante.nbr_of_tables = 12
-restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/1900.jfif'
-restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
-restaurante.save
-puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
-insert_products(restaurante.id)
+# restaurante = Restaurant.new()
+# restaurante.name = '1900 - Morumbi'
+# restaurante.address = 'R. Dr. Fonseca Brasil, 282 - Morumbi, São Paulo - SP, 05716-060'
+# restaurante.phone = '(11) 5575-1900'
+# restaurante.nbr_of_tables = 12
+# restaurante.user_id = usuario.id
+# photo_path3 = './app/assets/images/1900.jfif'
+# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
+# restaurante.save
+# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+# insert_products(restaurante.id)
 
-restaurante = Restaurant.new()
-restaurante.name = '1900 - Vila Mariana'
-restaurante.address = 'R. Estado de Israel, 240 - Vila Mariana, São Paulo - SP, 04022-000'
-restaurante.phone = '(11) 5575-1900'
-restaurante.nbr_of_tables = 20
-restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/1900.jfif'
-restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
-restaurante.save
-puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
-insert_products(restaurante.id)
+# restaurante = Restaurant.new()
+# restaurante.name = '1900 - Vila Mariana'
+# restaurante.address = 'R. Estado de Israel, 240 - Vila Mariana, São Paulo - SP, 04022-000'
+# restaurante.phone = '(11) 5575-1900'
+# restaurante.nbr_of_tables = 20
+# restaurante.user_id = usuario.id
+# photo_path3 = './app/assets/images/1900.jfif'
+# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
+# restaurante.save
+# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+# insert_products(restaurante.id)
 
-usuario = User.new()
-usuario.email = 'manoel@dono.com.br'
-usuario.password = '123456'
-usuario.password_confirmation = '123456'
-usuario.first_name = 'Manoel'
-usuario.last_name = 'Silva'
-usuario.phone = '(11) 99933-8833'
-photo_path2 = './app/assets/images/dono2.jfif'
-usuario.photo.attach(io: File.open(photo_path2), filename: 'perfil1.png', content_type: 'image/jpg')
-usuario.save
-puts "User ID: #{usuario.id}, Email: #{usuario.email}  created"
+# usuario = User.new()
+# usuario.email = 'manoel@dono.com.br'
+# usuario.password = '123456'
+# usuario.password_confirmation = '123456'
+# usuario.first_name = 'Manoel'
+# usuario.last_name = 'Silva'
+# usuario.phone = '(11) 99933-8833'
+# photo_path2 = './app/assets/images/dono2.jfif'
+# usuario.photo.attach(io: File.open(photo_path2), filename: 'perfil1.png', content_type: 'image/jpg')
+# usuario.save
+# puts "User ID: #{usuario.id}, Email: #{usuario.email}  created"
 
-restaurante = Restaurant.new()
-restaurante.name = 'Super Pizza'
-restaurante.address = 'Av. Aratãs, 794 - Indianópolis, São Paulo - SP, 04081-004'
-restaurante.phone = '(11) 5096-0176'
-restaurante.nbr_of_tables = 18
-restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/pizzaria2.jfif'
-restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo11.jpg', content_type: 'image/jpg')
-restaurante.save
-puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
-insert_products(restaurante.id)
+# restaurante = Restaurant.new()
+# restaurante.name = 'Super Pizza'
+# restaurante.address = 'Av. Aratãs, 794 - Indianópolis, São Paulo - SP, 04081-004'
+# restaurante.phone = '(11) 5096-0176'
+# restaurante.nbr_of_tables = 18
+# restaurante.user_id = usuario.id
+# photo_path3 = './app/assets/images/pizzaria2.jfif'
+# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo11.jpg', content_type: 'image/jpg')
+# restaurante.save
+# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+# insert_products(restaurante.id)
 
-restaurante = Restaurant.new()
-restaurante.name = 'Pizza Prime'
-restaurante.address = 'R. Graúna, 125 - Vila Uberabinha, São Paulo - SP, 04514-000'
-restaurante.phone = '(11) 3884-0305'
-restaurante.nbr_of_tables = 12
-restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/pizzaria2.jfif'
-restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo12.jpg', content_type: 'image/jpg')
-restaurante.save
-puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
-insert_products(restaurante.id)
+# restaurante = Restaurant.new()
+# restaurante.name = 'Pizza Prime'
+# restaurante.address = 'R. Graúna, 125 - Vila Uberabinha, São Paulo - SP, 04514-000'
+# restaurante.phone = '(11) 3884-0305'
+# restaurante.nbr_of_tables = 12
+# restaurante.user_id = usuario.id
+# photo_path3 = './app/assets/images/pizzaria2.jfif'
+# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo12.jpg', content_type: 'image/jpg')
+# restaurante.save
+# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+# insert_products(restaurante.id)
 
-restaurante = Restaurant.new()
-restaurante.name = 'Veridiana'
-restaurante.address = 'Rua Dona Veridiana, 661 - Higienópolis, São Paulo - SP, 01238-010'
-restaurante.phone = '(11) 3120-5050'
-restaurante.nbr_of_tables = 20
-restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/pizzaria2.jfif'
-restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo13.jpg', content_type: 'image/jpg')
-restaurante.save
-puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
-insert_products(restaurante.id)
-puts 'Finished!'
+# restaurante = Restaurant.new()
+# restaurante.name = 'Veridiana'
+# restaurante.address = 'Rua Dona Veridiana, 661 - Higienópolis, São Paulo - SP, 01238-010'
+# restaurante.phone = '(11) 3120-5050'
+# restaurante.nbr_of_tables = 20
+# restaurante.user_id = usuario.id
+# photo_path3 = './app/assets/images/pizzaria2.jfif'
+# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo13.jpg', content_type: 'image/jpg')
+# restaurante.save
+# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+# insert_products(restaurante.id)
+# puts 'Finished!'
 
 
 #6.times do
@@ -239,5 +271,5 @@ puts 'Finished!'
 #  price_per_night: 150,
 #  number_of_guests: 4
 #)
-
+#date range
 
