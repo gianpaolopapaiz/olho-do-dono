@@ -111,7 +111,6 @@ def insert_products(rest)
     puts "Product #{produto.id} - #{produto.name} created"
 end
 
-
 def insert_tables(rest)
 	t1 = Time.parse("2021-01-02 12:00:00")
 	t2 = Time.parse("2021-06-10 23:00:00")
@@ -140,6 +139,21 @@ def insert_tables(rest)
 				order_item.save
 			end
 		end
+	end
+end
+
+def insert_expenses(rest)
+	t1 = Time.parse("2021-01-02 12:00:00")
+	t2 = Time.parse("2021-12-20 23:00:00")
+	50.times do |index|
+		puts "Adding expense #{index + 1} for restaurant #{rest.name}"
+		exp = Expense.new
+		exp.restaurant = rest
+		exp.due_date = rand(t1..t2)
+		exp.category = ['Payroll', 'Rent&Utilities', 'Office Inputs'].sample
+		exp.description = "product for #{exp.category}"
+		exp.amount = rand(500...5000)
+		exp.save
 	end
 end
 
@@ -177,29 +191,30 @@ restaurante.save
 puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 insert_products(restaurante.id)
 insert_tables(restaurante)
+insert_expenses(restaurante)
 
-# restaurante = Restaurant.new()
-# restaurante.name = '1900 - Morumbi'
-# restaurante.address = 'R. Dr. Fonseca Brasil, 282 - Morumbi, São Paulo - SP, 05716-060'
-# restaurante.phone = '(11) 5575-1900'
-# restaurante.nbr_of_tables = 12
-# restaurante.user_id = usuario.id
-# photo_path3 = './app/assets/images/1900.jfif'
-# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
-# restaurante.save
-# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+restaurante = Restaurant.new()
+restaurante.name = '1900 - Morumbi'
+restaurante.address = 'R. Dr. Fonseca Brasil, 282 - Morumbi, São Paulo - SP, 05716-060'
+restaurante.phone = '(11) 5575-1900'
+restaurante.nbr_of_tables = 12
+restaurante.user_id = usuario.id
+photo_path3 = './app/assets/images/1900.jfif'
+restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
+restaurante.save
+puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 # insert_products(restaurante.id)
 
-# restaurante = Restaurant.new()
-# restaurante.name = '1900 - Vila Mariana'
-# restaurante.address = 'R. Estado de Israel, 240 - Vila Mariana, São Paulo - SP, 04022-000'
-# restaurante.phone = '(11) 5575-1900'
-# restaurante.nbr_of_tables = 20
-# restaurante.user_id = usuario.id
-# photo_path3 = './app/assets/images/1900.jfif'
-# restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
-# restaurante.save
-# puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
+restaurante = Restaurant.new()
+restaurante.name = '1900 - Vila Mariana'
+restaurante.address = 'R. Estado de Israel, 240 - Vila Mariana, São Paulo - SP, 04022-000'
+restaurante.phone = '(11) 5575-1900'
+restaurante.nbr_of_tables = 20
+restaurante.user_id = usuario.id
+photo_path3 = './app/assets/images/1900.jfif'
+restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
+restaurante.save
+puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 # insert_products(restaurante.id)
 
 # usuario = User.new()
