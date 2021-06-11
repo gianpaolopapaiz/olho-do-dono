@@ -10,19 +10,16 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
-          <% @order_items.each do |order_items| %>
-            <tr>
-              <td><%= order_item.table %></td>
-              <td><%= order_item.product %></td>
-              <td><%= order_item.qtd %></td>
-              <td></td>
-              <td><%= link_to 'placed', "#", class: 'btn btn-outline-primary btn-sm' %></td>
-              <td><%= link_to 'preparing', "#", class: 'btn btn-outline-warning btn-sm' %></td>
-              <td><%= link_to 'ready', "#", class: 'btn btn-outline-success btn-sm' %></td>
-            </tr>
-          <% end %>
-        </tbody>
+        <% @order_items.each do |order_item| %>
+          <tbody>
+            <td><%= order_item.table.number %></td>
+            <td><%= order_item.product.name %></td>
+            <td><%= order_item.product_quantity %></td>
+            <td><%= "#{order_item.created_at.hour-3}:#{order_item.created_at.min}" %></td>
+            <td><%= link_to 'preparing', "#", class: 'btn btn-outline-warning btn-sm' %></td>
+            <td><%= link_to 'ready', "#", class: 'btn btn-outline-success btn-sm' %></td>
+          </tbody>
+        <% end %>
       <td><%= link_to "back", "#", class: 'btn btn-back btn-sm' %></td>
     </table>
   </div>
