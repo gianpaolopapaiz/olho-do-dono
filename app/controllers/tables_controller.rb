@@ -14,6 +14,26 @@ class TablesController < ApplicationController
     @order_item = OrderItem.new
     @order_items = @table.order_items
     @sum = @order_items
+    if @table.rating
+      redirect_to "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new"
+    end
+    
+    if @table.status == 'waiting'
+      close_order_items
+      sleep(5)
+      @table.status = 'closed'
+      @table.save
+      # redirect_to "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/#{@table.id}"
+      # render :show
+    end
+    
+    if @table.payment_type && @table.status == 'open'
+      @table.status = 'waiting'
+      @table.save
+      # redirect_to "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/#{@table.id}"
+      render :show
+    end
+
   end
 
   def new
@@ -72,11 +92,21 @@ class TablesController < ApplicationController
       redirect_to "/restaurants/#{restaurant.id}/spaces/#{@number}/tables/#{table.id}"
     end
   end
+  
+  def close_order_items
+    table = Table.find(params[:id])
+    order_items = table.order_items
+    order_items.each do |item|
+      item.status = 'paid'
+      item.save
+    end
+  end
 
   private
 
   def table_params
     params.require(:table).permit(:payment_type, :rating, :comment)
   end
+
 
 end
