@@ -16,6 +16,7 @@ class RestaurantsController < ApplicationController
     @month_order_qty = 0
     @day_amount = 0
     @day_order_qty = 0
+  
     items.each do |item|
       if item.updated_at.year == today_year
         @year_amount += item.product_quantity * item.product.price
