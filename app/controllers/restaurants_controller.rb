@@ -41,6 +41,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new()
   end
 
+  def cashflow
+    
+  end
+
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user_id = current_user.id
