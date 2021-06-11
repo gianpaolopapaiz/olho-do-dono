@@ -1,8 +1,9 @@
 <div class="olho-container-table">
   <div class="olho-div div-90 p-4">
     <div class= "olho-grid-container">
+      
+      <!-- Column 1 -->
       <div class=''>
-
         <% if @restaurant.photo.attached? %>
           <%= cl_image_tag @restaurant.photo.key %>
         <% else %>
@@ -13,8 +14,9 @@
         <p>Status: <%= @table.status %></p>
       </div>
 
+      <!-- Column 2 -->
       <% if !@table.payment_type %>
-      
+        <!-- Product List-->
         <div class='olho-div py-3 overflow-auto'>
           <h2 class='text-center'>Menu</h2>
           <nav>
@@ -26,6 +28,7 @@
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
+            <!-- All Products -->
             <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
               <% if @products.length > 0 %>
                 <div class=" d-flex align-items-center justify-content-start flex-wrap container">
@@ -53,6 +56,7 @@
                 </div>  
               <% end %>
             </div>
+            <!-- Food Products -->
             <div class="tab-pane fade" id="nav-food" role="tabpanel" aria-labelledby="nav-food-tab">
               <% if @foods.length > 0 %>
                 <div class=" d-flex align-items-center justify-content-start flex-wrap container">
@@ -68,7 +72,11 @@
                         <p><%= product.description %></p>
                         <p><strong>$<%= product.price %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                          <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
+                              <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
+                              <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -76,6 +84,7 @@
                 </div>  
               <% end %>
             </div>
+            <!-- Beverage Products -->
             <div class="tab-pane fade" id="nav-beverage" role="tabpanel" aria-labelledby="nav-beverage-tab">
               <% if @beverages.length > 0 %>
                 <div class=" d-flex align-items-center justify-content-start flex-wrap container">
@@ -91,7 +100,11 @@
                         <p><%= product.description %></p>
                         <p><strong>$<%= product.price %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                          <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
+                              <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
+                              <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -99,6 +112,7 @@
                 </div>  
               <% end %> 
             </div>
+            <!-- Dessert Products -->
             <div class="tab-pane fade" id="nav-dessert" role="tabpanel" aria-labelledby="nav-dessert-tab">
               <% if @desserts.length > 0 %>
                 <div class=" d-flex align-items-center justify-content-start flex-wrap container">
@@ -114,7 +128,11 @@
                         <p><%= product.description %></p>
                         <p><strong>$<%= product.price %></strong></p>
                         <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-                          <%= link_to 'add', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+                          <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
+                              <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
+                              <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -122,36 +140,42 @@
                 </div>  
               <% end %>
             </div>
+
           </div>
         </div>
 
-      <% elsif @table.payment_type && @table.status == 'open' %>
-        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+      <% elsif @table.status == 'waiting' %>
+        <!-- Waiting Payment-->
+        <div id='reload-js' class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
           <div class='olho-div olho-form olho-green text-white text-center'>
            <h1>Waiting for Payment Confirmation</h1>
           </div>
         </div>
       <% else %>
+        <!-- Thanks and Rating -->
         <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
-          <div class='olho-div olho-form'>
+          <div class='olho-div olho-form-end text-center'>
+          <h1>Thank you for your visit! </h1>
+          <br>
           <%= simple_form_for(@table) do |f| %>
-          <h2 class='text-center'>Rate us</h2>
+          <h4 class='text-center'>Please, leave a review about our restaurant:</h4>
+          <br>
             <div class="form-inputs">
               <%= f.input :rating,
                           required: true,
-                          collection: %w[Credit Debit Cash] %>
+                          collection: %i[1 2 3 4 5] %>
               <%= f.input :comment %>
             </div>
-            <div class="form-actions">
-              <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3' %>
+            <div class="form-actions d-flex items-align-center justify-content-between w-100">
+              <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3 mr-2' %>
+              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-form-button olho-btn olho-red mt-3 ml-2' %>
             </div>
           <% end %>
           </div>
         </div>
-      <% end %>
-      
+      <% end %> 
         
-
+      <!-- Column 3 -->
       <div class='olho-div py-3 p-3'>
         <h2 class='text-center'>Bill</h2>
         
@@ -179,14 +203,16 @@
         </div>
         <div class='w-100 text-right' style='height: fill'>
           <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
-          <!-- Button trigger modal -->
           
+          <!-- Button trigger modal -->
           <% if !@table.payment_type %>
             <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
-            Checkout
+              Checkout
             </button>
           <% else %>
-            <p>Waiting for payment confirmation...</p>
+            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
+              Checkout
+            </button>
           <% end %>
           
 
@@ -218,8 +244,10 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
+
     </div>
   </div>  
 </div>
