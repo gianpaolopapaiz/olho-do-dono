@@ -34,21 +34,46 @@ class RestaurantsController < ApplicationController
     @nbr_beverages = @restaurant.products.where(category: 'Beverage').count
     @nbr_desserts = @restaurant.products.where(category: 'Dessert').count
     @expense_hash = @restaurant.expenses.where('due_date >?', Date.today).each_with_object(Hash.new(0)) {|expense, hash| hash[expense.category] += expense.amount }
-    product_hash = @restaurant.order_items.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity }
+
+    food_orders = @restaurant.order_items.joins("INNER JOIN products ON order_items.product_id = products.id AND products.category = 'Food' and order_items.status = 'paid'")
+    food_qty_hash = food_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity }
+    food_qty_hash = food_qty_hash.sort_by {|k,v| v}.reverse
+    food_amount_hash = food_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
+    food_amount_hash = food_amount_hash.sort_by {|k,v| v}.reverse
+
+    beverage_orders = @restaurant.order_items.joins("INNER JOIN products ON order_items.product_id = products.id AND products.category = 'Beverage' and order_items.status = 'paid'")
+    beverage_qty_hash = beverage_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity }
+    beverage_qty_hash = beverage_qty_hash.sort_by {|k,v| v}.reverse
+    beverage_amount_hash = beverage_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
+    beverage_amount_hash = beverage_amount_hash.sort_by {|k,v| v}.reverse
+
+    dessert_orders = @restaurant.order_items.joins("INNER JOIN products ON order_items.product_id = products.id AND products.category = 'Dessert' and order_items.status = 'paid'")
+    dessert_qty_hash = dessert_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity }
+    dessert_qty_hash = dessert_qty_hash.sort_by {|k,v| v}.reverse    
+    dessert_amount_hash = dessert_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
+    dessert_amount_hash = dessert_amount_hash.sort_by {|k,v| v}.reverse
+
     @item1 = ""
     @item2 = ""
     @item3 = ""
-    @item1 = "#{product_hash.sort[0][0]} (#{product_hash.sort[0][1]})" if product_hash.count > 0
-    @item2 = "#{product_hash.sort[1][0]} (#{product_hash.sort[1][1]})" if product_hash.count > 1
-    @item3 = "#{product_hash.sort[2][0]} (#{product_hash.sort[2][1]})" if product_hash.count > 2
-    prod_amount_hash = @restaurant.order_items.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
+    @item1 = "#{food_qty_hash[0][0]} (#{food_qty_hash[0][1]})" if food_orders.count > 0
+    @item2 = "#{beverage_qty_hash[0][0]} (#{beverage_qty_hash[0][1]})" if beverage_orders.count > 0
+    @item3 = "#{dessert_qty_hash[0][0]} (#{dessert_qty_hash[0][1]})" if dessert_orders.count > 0
     @amount1 = ""
     @amount2 = ""
     @amount3 = ""
-    @amount1 = "#{prod_amount_hash.flatten[0]} $#{prod_amount_hash.flatten[1]}0" if prod_amount_hash.count > 0
-    @amount2 = "#{prod_amount_hash.flatten[2]} $#{prod_amount_hash.flatten[3]}0" if prod_amount_hash.count > 1
-    @amount3 = "#{prod_amount_hash.flatten[4]} $#{prod_amount_hash.flatten[5]}0" if prod_amount_hash.count > 2
-
+    @amount1 = "#{food_amount_hash[0][0]} $#{food_amount_hash[0][1]}0" if food_orders.count > 0
+    @amount2 = "#{beverage_amount_hash[0][0]} $#{beverage_amount_hash[0][1]}0" if beverage_orders.count > 0
+    @amount3 = "#{dessert_amount_hash[0][0]} $#{dessert_amount_hash[0][1]}0" if dessert_orders.count > 0
+    total = 0
+    food_amount_hash.each {|k, v| total += v }
+    @tot_amount1 ="$#{total}0"
+    total = 0
+    beverage_amount_hash.each {|k, v| total += v }
+    @tot_amount2 ="$#{total}0"
+    total = 0
+    dessert_amount_hash.each {|k, v| total += v }
+    @tot_amount3 ="$#{total}0"
   end
 
   def new
