@@ -144,9 +144,9 @@
           </div>
         </div>
 
-      <% elsif @table.payment_type && @table.status == 'open' %>
+      <% elsif @table.status == 'waiting' %>
         <!-- Waiting Payment-->
-        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+        <div id='reload-js' class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
           <div class='olho-div olho-form olho-green text-white text-center'>
            <h1>Waiting for Payment Confirmation</h1>
           </div>
@@ -168,7 +168,7 @@
             </div>
             <div class="form-actions d-flex items-align-center justify-content-between w-100">
               <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3 mr-2' %>
-              <%= link_to 'skip', '#', class: 'olho-form-button olho-btn olho-red mt-3 ml-2' %>
+              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-form-button olho-btn olho-red mt-3 ml-2' %>
             </div>
           <% end %>
           </div>
