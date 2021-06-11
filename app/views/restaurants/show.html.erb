@@ -77,10 +77,10 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Kitchen Menu</strong></h5>
                 <br>
-                <h6 class="card-text "><strong>Top Food:</strong> Pizza Calabresa (192)</h6>
-                <h6 class="card-text "><strong>Top Beverage:</strong> Cerveja (143)</h6>
-                <h6 class="card-text "><strong>Top Dessert:</strong> Brigadeiro (35)</h6>
-                <h6 class="card-text "><strong>Average prep time:</strong> 25 min</h6>
+                <h6 class="card-text " style = "color: green"><strong>Top 1 Product:</strong> <%=@item1 %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Top 2 Product:</strong> <%=@item2 %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Top 3 Product:</strong> <%=@item3 %></h6>
+                <br>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_products_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
@@ -97,9 +97,18 @@
   <div class="container olho-div">
     <div class="d-flex flex-wrap justify-content-center">
 
+        <div class="card mx-3 mt-3" style="width: 21rem;">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Greater Revenue</strong></h5>
+                <br>
+                <h6 class="card-text " style = "color: green"><strong>Foods:</strong> <%= @amount1 %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Beverages:</strong> <%= @amount2 %></h6>
+                <h6 class="card-text " style = "color: green"><strong>Desserts:</strong> <%= @amount3 %></h6>
+            </div>
+        </div>
 
 
-        <div class="card mx-3 mt-3" style="width: 11rem;">
+        <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Orders</strong></h5>
                 <br>
@@ -109,9 +118,9 @@
             </div>
         </div>
 
-        <div class="card mx-3 mt-3" style="width: 11rem;">
+        <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Menu</strong></h5>
+                <h5 class="card-title text-center"><strong>Menu Items</strong></h5>
                 <br>
                 <h6 class="card-text " style = "color: green"><strong>Foods:</strong> <%= @nbr_foods %></h6>
                 <h6 class="card-text " style = "color: green"><strong>Beverages:</strong> <%= @nbr_beverages %></h6>
@@ -119,35 +128,6 @@
             </div>
         </div>
 
-        <div class="card mx-3 mt-3" style="width: 11rem;">
-            <div class="card-body">
-                <h5 class="card-title text-center"><strong>Tables</strong></h5>
-                <br>
-                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
-                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
-                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
-            </div>
-        </div>
-
-        <div class="card mx-3 mt-3" style="width: 11rem;">
-            <div class="card-body">
-                <h5 class="card-title text-center"><strong>Ratings</strong></h5>
-                <br>
-                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
-                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
-                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
-            </div>
-        </div>
-
-        <div class="card mx-3 mt-3" style="width: 11rem;">
-            <div class="card-body">
-                <h5 class="card-title text-center"><strong>Ratings</strong></h5>
-                <br>
-                <h6 class="card-text "><strong>Foods:</strong> 8</h6>
-                <h6 class="card-text "><strong>Beverages:</strong> 4</h6>
-                <h6 class="card-text "><strong>Desserts:</strong> 5</h6>
-            </div>
-        </div>
         
     </div>
     <br>
