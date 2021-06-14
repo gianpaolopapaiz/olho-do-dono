@@ -7,216 +7,119 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"> Restaurant</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
+          <th scope="col" style = "width:120px"> REVENUE</th>
+          <th scope="col" style = "width:100px"> Jan</th>
+          <th scope="col" style = "width:100px"> Feb</th>
+          <th scope="col" style = "width:100px"> Mar</th>
+          <th scope="col" style = "width:100px"> Apr</th>
+          <th scope="col" style = "width:100px"> May</th>
+          <th scope="col" style = "width:100px"> Jun</th>
+          <th scope="col" style = "width:100px"> Jul</th>
+          <th scope="col" style = "width:100px"> Aug</th>
+          <th scope="col" style = "width:100px"> Sep</th>
+          <th scope="col" style = "width:100px"> Oct</th>
+          <th scope="col" style = "width:100px"> Nov</th>
+          <th scope="col" style = "width:100px"> Dec</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="col"> Food</th>
-          <td class="small" style="text-align:right;"> $10000.00</td>
-          <td class="small" style="text-align:right;"> $21000.00</td>
-          <td class="small" style="text-align:right;"> $12000.00</td>
-          <td class="small" style="text-align:right;"> $8000.00</td>
-          <td class="small" style="text-align:right;"> $9200.00</td>
-          <td class="small" style="text-align:right;"> $2350.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Food</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i]) %></td>
+          <%end%>
         </tr>
         <tr>
-          <th scope="col"> Beverage</th>
-          <td class="small" style="text-align:right;"> $1200.00</td>
-          <td class="small" style="text-align:right;"> $2210.00</td>
-          <td class="small" style="text-align:right;"> $1200.00</td>
-          <td class="small" style="text-align:right;"> $1800.00</td>
-          <td class="small" style="text-align:right;"> $1320.00</td>
-          <td class="small" style="text-align:right;"> $2135.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Beverage</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_beverage[i]) %></td>
+          <%end%>
         </tr>
         <tr>
-          <th scope="col"> Dessert</th>
-          <td class="small" style="text-align:right;"> $1000.00</td>
-          <td class="small" style="text-align:right;"> $1200.00</td>
-          <td class="small" style="text-align:right;"> $800.00</td>
-          <td class="small" style="text-align:right;"> $1800.00</td>
-          <td class="small" style="text-align:right;"> $1400.00</td>
-          <td class="small" style="text-align:right;"> $2350.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Dessert</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_dessert[i]) %></td>
+          <%end%>
         </tr>
         <tr style="background-color: darkblue; color:white">
-          <th scope="col"> Total</th>
-          <th class="small" scope="col" style="text-align:right;"> $12200.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $24410.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $14000.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $11600.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $11920.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $6835.00</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
+          <th scope="col" style = "width:120px"> Total</th>
+          <% for i in 1..12 do %>
+            <th class="small" scope="col" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) %></th>
+          <%end%>
         </tr>
       </tbody>
-    </table>
-    <br>
-    <h5> Expenses </h5>
-    <table class="table">
       <thead>
         <tr>
-          <th scope="col"> Category</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
+          <th scope="col" style = "width:120px"> EXPENSES</th>
+          <th scope="col" style = "width:100px"> Jan</th>
+          <th scope="col" style = "width:100px"> Feb</th>
+          <th scope="col" style = "width:100px"> Mar</th>
+          <th scope="col" style = "width:100px"> Apr</th>
+          <th scope="col" style = "width:100px"> May</th>
+          <th scope="col" style = "width:100px"> Jun</th>
+          <th scope="col" style = "width:100px"> Jul</th>
+          <th scope="col" style = "width:100px"> Aug</th>
+          <th scope="col" style = "width:100px"> Sep</th>
+          <th scope="col" style = "width:100px"> Oct</th>
+          <th scope="col" style = "width:100px"> Nov</th>
+          <th scope="col" style = "width:100px"> Dec</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="col"> Payroll</th>
-          <td class="small" style="text-align:right;"> $5500.00</td>
-          <td class="small" style="text-align:right;"> $5243.00</td>
-          <td class="small" style="text-align:right;"> $1200.00</td>
-          <td class="small" style="text-align:right;"> $8000.00</td>
-          <td class="small" style="text-align:right;"> $3200.00</td>
-          <td class="small" style="text-align:right;"> $2350.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Payroll</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_payroll[i]) %></td>
+          <%end%>
         </tr>
         <tr>
-          <th scope="col"> Utilities</th>
-          <td class="small" style="text-align:right;"> $100.00</td>
-          <td class="small" style="text-align:right;"> $210.00</td>
-          <td class="small" style="text-align:right;"> $1200.00</td>
-          <td class="small" style="text-align:right;"> $800.00</td>
-          <td class="small" style="text-align:right;"> $320.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Utilities</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_rent[i]) %></td>
+          <%end%>
         </tr>
         <tr>
-          <th scope="col"> Office</th>
-          <td class="small" style="text-align:right;"> $1000.00</td>
-          <td class="small" style="text-align:right;"> $120.00</td>
-          <td class="small" style="text-align:right;"> $800.00</td>
-          <td class="small" style="text-align:right;"> $1800.00</td>
-          <td class="small" style="text-align:right;"> $1400.00</td>
-          <td class="small" style="text-align:right;"> $235.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Office</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_office[i]) %></td>
+          <%end%>
         </tr>
         <tr>
-          <th scope="col"> Inputs</th>
-          <td class="small" style="text-align:right;"> $1000.00</td>
-          <td class="small" style="text-align:right;"> $120.00</td>
-          <td class="small" style="text-align:right;"> $800.00</td>
-          <td class="small" style="text-align:right;"> $1800.00</td>
-          <td class="small" style="text-align:right;"> $1400.00</td>
-          <td class="small" style="text-align:right;"> $235.00</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
-          <td class="small" style="text-align:right;"> -</td>
+          <th scope="col" style = "width:120px"> Inputs</th>
+          <% for i in 1..12 do %>
+            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_input[i]) %></td>
+          <%end%>
         </tr>
         <tr style="background-color: orange">
-          <th scope="col"> Total</th>
-          <th class="small" scope="col" style="text-align:right;"> $7600.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $5693.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $4000.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $3300.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $6320.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $2820.00</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
+          <th scope="col" style = "width:120px"> Total</th>
+          <% for i in 1..12 do %>
+            <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i]) %></th>
+          <%end%>
         </tr>
       </tbody>
-    </table>
-    <table class="table">
-      <h5> Balance </h5>
       <thead>
         <tr>
-          <th scope="col" style="color: white"> Category</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
+          <th scope="col" style="color: white width:120px"> Category</th>
+          <th scope="col" style = "width:100px"> Jan</th>
+          <th scope="col" style = "width:100px"> Feb</th>
+          <th scope="col" style = "width:100px"> Mar</th>
+          <th scope="col" style = "width:100px"> Apr</th>
+          <th scope="col" style = "width:100px"> May</th>
+          <th scope="col" style = "width:100px"> Jun</th>
+          <th scope="col" style = "width:100px"> Jul</th>
+          <th scope="col" style = "width:100px"> Aug</th>
+          <th scope="col" style = "width:100px"> Sep</th>
+          <th scope="col" style = "width:100px"> Oct</th>
+          <th scope="col" style = "width:100px"> Nov</th>
+          <th scope="col" style = "width:100px"> Dec</th>
         </tr>
       </thead>
       <tbody>
         <tr style="background-color: lightgreen">
-          <th scope="col"> Total</th>
-          <th class="small" scope="col" style="text-align:right;"> $4600.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $18717.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $10000.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $8300.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $5600.00</th>
-          <th class="small" scope="col" style="text-align:right;"> $3535.00</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
-          <th class="small" scope="col" style="text-align:right;"> -</th>
+          <th scope="col" style = "width:120px"> Total</th>
+          <% for i in 1..12 do %>
+            <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency((@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) - (@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i])) %></th>
+          <%end%>
         </tr>
       </tbody>
     </table>
