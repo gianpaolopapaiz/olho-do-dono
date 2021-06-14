@@ -1,5 +1,7 @@
-<div class="olho-form-container">
+<div class="olho-form-container" p-5>
+<br>
   <div class="container olho-div">
+    
     <div class="card-restaurant">
         <% if @restaurant.photo.attached? %>
         <%= cl_image_tag @restaurant.photo.key, crop: :fill %>
@@ -92,12 +94,8 @@
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Revenue & Cash-flow</strong></h5>
+                <%= pie_chart [["Foods", @tot_amount1], ["Beverages", @tot_amount2], ["Desserts", @tot_amount3]], legend: "bottom", prefix: "$", thousands: ".", decimal: "," %>
                 <br>
-                <h6 style = "color: green"><strong>Day:</strong> <%= number_to_currency(@day_amount)  %> </h6>
-                <h6 style = "color: green"> <strong> Month:</strong> <%= number_to_currency(@month_amount) %> </h6> 
-                <h6 style = "color: green"> <strong> Year:</strong>  <%= number_to_currency(@year_amount) %> </h6> 
-                <h6><strong>Cash-In of the Month :</strong> R$ 75.200,00 </h6> 
-                <h6><strong>Cash-Out of the Month :</strong> R$ 48.100,00</h6>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_cashflow_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
                 </div>
@@ -107,11 +105,7 @@
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Open Expenses</strong></h5>
-                <br>
-                <h6 class="card-text" style = "color: green"><strong>Payroll:</strong> <%= number_to_currency(@expense_hash['Payroll']) %></h6>
-                <h6 class="card-text" style = "color: green"><strong>Rent & Utilities:</strong> <%= number_to_currency(@expense_hash['Rent&Utilities']) %></h6>
-                <h6 class="card-text" style = "color: green"><strong>Office:</strong> <%= number_to_currency(@expense_hash['Office']) %></h6>
-                <h6 class="card-text" style = "color: green"><strong>Inputs:</strong> <%= number_to_currency(@expense_hash['Inputs']) %></h6>
+                <%= bar_chart [ ["Payroll", @expense_hash['Payroll'] ], ["Rent&Utilities", @expense_hash['Rent&Utilities'] ], ["Office", @expense_hash['Office'] ], ["Inputs", @expense_hash['Inputs']] ], prefix: "$", thousands: ".", decimal: "," %>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_expenses_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
@@ -122,11 +116,7 @@
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Kitchen Menu</strong></h5>
-                <br>
-                <h6 class="card-text " style = "color: green"><strong>Top Food:</strong> <%=@item1 %></h6>
-                <h6 class="card-text " style = "color: green"><strong>Top Beverage:</strong> <%=@item2 %></h6>
-                <h6 class="card-text " style = "color: green"><strong>Top Dessert:</strong> <%=@item3 %></h6>
-                <br>
+                <%= column_chart [ [@item1_name, @item1 ], [@item2_name, @item2 ], [@item3_name, @item3 ] ], thousands: "." %>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_products_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
@@ -147,10 +137,10 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Revenue Details</strong></h5>
                 <br>
-                <h6 class="card-text " style = "color: green"><strong>Foods:</strong> <%= @tot_amount1 %></h6>
-                <h6 class="card-text " style = "color: green"><strong>Beverages:</strong> <%= @tot_amount2 %></h6>
-                <h6 class="card-text " style = "color: green"><strong>Desserts:</strong> <%= @tot_amount3 %></h6>
-            </div>
+                <h6 style = "color: green"><strong>Day:</strong> <%= number_to_currency(@day_amount)  %> </h6>
+                <h6 style = "color: green"> <strong> Month:</strong> <%= number_to_currency(@month_amount) %> </h6> 
+                <h6 style = "color: green"> <strong> Year:</strong>  <%= number_to_currency(@year_amount) %> </h6> 
+           </div>
         </div>
 
         <div class="card mx-3 mt-3" style="width: 19rem;">
@@ -188,7 +178,7 @@
     </div>
     <br>
   </div>
-
+  <br>
 
 </div>
 
