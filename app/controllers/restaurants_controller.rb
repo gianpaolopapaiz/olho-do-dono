@@ -53,12 +53,33 @@ class RestaurantsController < ApplicationController
     dessert_qty_hash = dessert_qty_hash.sort_by {|k,v| v}.reverse    
     dessert_amount_hash = dessert_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
     dessert_amount_hash = dessert_amount_hash.sort_by {|k,v| v}.reverse
-    @item1 = ""
-    @item2 = ""
-    @item3 = ""
-    @item1 = "#{food_qty_hash[0][0]} (#{food_qty_hash[0][1]})" if food_orders.count > 0
-    @item2 = "#{beverage_qty_hash[0][0]} (#{beverage_qty_hash[0][1]})" if beverage_orders.count > 0
-    @item3 = "#{dessert_qty_hash[0][0]} (#{dessert_qty_hash[0][1]})" if dessert_orders.count > 0
+    #@item1 = ""
+    #@item2 = ""
+    #@item3 = ""
+    # @item1 = "#{food_qty_hash[0][0]} (#{food_qty_hash[0][1]})" if food_orders.count > 0
+    # @item2 = "#{beverage_qty_hash[0][0]} (#{beverage_qty_hash[0][1]})" if beverage_orders.count > 0
+    # @item3 = "#{dessert_qty_hash[0][0]} (#{dessert_qty_hash[0][1]})" if dessert_orders.count > 0
+    if food_orders.count > 0
+      @item1_name = food_qty_hash[0][0] 
+      @item1 = food_qty_hash[0][1]
+    else
+      @item1_name = "" 
+      @item1 = 0
+    end
+    if beverage_orders.count > 0
+      @item2_name = beverage_qty_hash[0][0] 
+      @item2 = beverage_qty_hash[0][1]
+    else
+      @item2_name = "" 
+      @item2 = 0
+    end
+    if dessert_orders.count > 0
+      @item3_name = dessert_qty_hash[0][0] 
+      @item3 = dessert_qty_hash[0][1]
+    else
+      @item3_name = "" 
+      @item3 = 0
+    end
     @amount1 = ""
     @amount2 = ""
     @amount3 = ""
@@ -67,13 +88,13 @@ class RestaurantsController < ApplicationController
     @amount3 = "#{dessert_amount_hash[0][0]} $#{dessert_amount_hash[0][1]}0" if dessert_orders.count > 0
     total = 0
     food_amount_hash.each {|k, v| total += v }
-    @tot_amount1 ="$#{total}0"
+    @tot_amount1 =total
     total = 0
     beverage_amount_hash.each {|k, v| total += v }
-    @tot_amount2 ="$#{total}0"
+    @tot_amount2 =total
     total = 0
     dessert_amount_hash.each {|k, v| total += v }
-    @tot_amount3 ="$#{total}0"
+    @tot_amount3 =total
 
     @comment_tables = @restaurant.tables.where("comment != ''").order(updated_at: :desc)
   end
