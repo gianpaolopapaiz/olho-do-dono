@@ -3,12 +3,15 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 60px;
+  flex-grow: 0;
   padding: 15px 35px;
   color: rgba(0,0,0,0.8);
+  position: relative;
   bottom: 0;
+  min-height: 60px;
   width: 100%;
 }
+
 .footer-links {
   display: flex;
   justify-content: center;
