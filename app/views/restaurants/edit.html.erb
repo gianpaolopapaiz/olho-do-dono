@@ -1,25 +1,26 @@
 <div class="olho-form-container">
-<div class="olho-form container olho-div">
-  <h2>Edit Restaurant</h2>
-  <%= simple_form_for [@restaurant] do |f| %>
-    <%= f.error_notification %>
+  <div class="olho-form container olho-div">
+    <h2>Edit Restaurant</h2>
+    <%= simple_form_for [@restaurant] do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :name,
-                  autofocus: true,
-                  required: true,
-                  input_html: { autocomplete: "name" }%>
-      <%= f.input :address,
-                  required: true %>
-      <%= f.input :phone,
-                  required: true %>
-      <%= f.input :nbr_of_tables,
-                  required: true %>
-      <%= f.input :photo, as: :file %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    autofocus: true,
+                    required: true,
+                    input_html: { autocomplete: "name" }%>
+        <%= f.input :address,
+                    required: true %>
+        <%= f.input :phone,
+                    required: true %>
+        <%= f.input :nbr_of_tables,
+                    required: true %>
+        <%= f.input :photo, as: :file %>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Submit", class: 'olho-form-button olho-btn olho-green' %>
-    </div>
-  <% end %>
+        <div class="form-actions">
+          <%= f.button :submit, "Submit", class: 'olho-form-button olho-btn olho-green' %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
