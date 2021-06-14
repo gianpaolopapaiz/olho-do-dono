@@ -25,15 +25,15 @@ import { paymentReload } from '../components/payment_reload'
 // External imports
 import "bootstrap";
 import "chartkick/chart.js";
-
+import { initRestaurantCable } from '../channels/restaurant_channel';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initRestaurantCable();
   if (document.getElementById('reload-js')) {
     paymentReload();
   }
-
 });

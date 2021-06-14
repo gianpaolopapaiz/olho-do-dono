@@ -15,10 +15,18 @@ class OrderItemsController < ApplicationController
     order_item.product = product
     order_item.table = table
     order_item.status = 'placed'
-    if !order_item.save
+    if order_item.save
+      
+      RestaurantChannel.broadcast_to(
+        order_item.table.restaurant,
+        render_to_string(partial: "order_item", locals: { order_item: order_item })
+      )
+      redirect_to restaurant_table_show_path(table.restaurant, table.number, table)
+    else
       flash[:alert] = 'Something went wrong'
+      redirect_to restaurant_table_show_path(table.restaurant, table.number, table)
     end
-    redirect_to "/restaurants/#{table.restaurant.id}/spaces/#{table.number}/tables/#{table.id}"
+    # redirect_to "/restaurants/#{table.restaurant.id}/spaces/#{table.number}/tables/#{table.id}"
   end
 
   def destroy

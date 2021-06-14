@@ -1,7 +1,7 @@
 <div class="olho-container-kitchen">
   <div class="olho-div p-2">
+    <h2 class="m-3"><strong>Order Kitchen Management</strong></h2>
     <table class="table">
-      <h2 class="m-3"><strong>Order Kitchen Management</strong></h2>
         <thead>
           <tr>
             <th scope="col">Table</th>
@@ -10,17 +10,11 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <% @order_items.each do |order_item| %>
-          <tbody>
-            <td><%= order_item.table.number %></td>
-            <td><%= order_item.product.name %></td>
-            <td><%= order_item.product_quantity %></td>
-            <td><%= "#{order_item.created_at.hour-3}:#{order_item.created_at.min}" %></td>
-            <td><%= link_to 'preparing', "#", class: 'btn btn-outline-warning btn-sm' %></td>
-            <td><%= link_to 'ready', "#", class: 'btn btn-outline-success btn-sm' %></td>
-          </tbody>
-        <% end %>
-      <td><%= link_to "back", "#", class: 'btn btn-back btn-sm' %></td>
+        <tbody data-restaurant-id="<%= @restaurant.id %>" id="order-items">
+          <% @order_items.each do |order_item| %>
+            <%= render order_item  %>
+          <% end %>
+        </tbody>
     </table>
   </div>
 </div>
