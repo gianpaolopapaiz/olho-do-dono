@@ -122,7 +122,7 @@ def insert_tables(rest)
 			table.restaurant = rest
 			table.number = index + 1
 			table.payment_type = %w[Credit Debit Cash].sample
-			table.rating = %i[1 2 3 4 5].sample
+			table.rating = rand(1..5)
 			table.comment = 'Comment'
 			table.status = 'closed'
 			table.save
