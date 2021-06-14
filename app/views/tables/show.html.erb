@@ -53,7 +53,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2 olho-table', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -81,7 +81,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -109,7 +109,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -137,7 +137,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -212,11 +212,11 @@
           
           <!-- Button trigger modal -->
           <% if !@table.payment_type %>
-            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
+            <button type="button" class="olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
               Checkout
             </button>
           <% else %>
-            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
+            <button type="button" class=" olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
               Checkout
             </button>
           <% end %>
