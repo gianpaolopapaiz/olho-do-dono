@@ -91,26 +91,54 @@ class RestaurantsController < ApplicationController
     @cashflow_food = Hash.new(0)
     @cashflow_beverage = Hash.new(0)
     @cashflow_dessert = Hash.new(0)
+    @total_revenue = Hash.new(0)
     items.each do |item|
       if item.updated_at.year == today_year
 
         @cashflow_food[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Food'
         @cashflow_beverage[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Beverage'
         @cashflow_dessert[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Dessert'
-
       end
     end
+    for i in 1..12 do
+      if @cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i] > 0
+        @total_revenue[i] += @cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]  
+      end
+    end
+    @total_revenue = @total_revenue.sort_by {|k,v| k}    
     @cashflow_payroll = Hash.new(0)
     @cashflow_rent = Hash.new(0)
     @cashflow_input = Hash.new(0)
     @cashflow_office = Hash.new(0)
+    @total_expenses = Hash.new(0)
     expenses = @restaurant.expenses
     expenses.each do |item|
-      @cashflow_payroll[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Payroll'
-      @cashflow_office[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Office'
-      @cashflow_input[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Inputs'
-      @cashflow_rent[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Rent&Utilities'
+      @cashflow_payroll[item.due_date.month] += item.amount if item.due_date.year == today_year && item.category == 'Payroll'
+      @cashflow_office[item.due_date.month] += item.amount if item.due_date.year == today_year && item.category == 'Office'
+      @cashflow_input[item.due_date.month] += item.amount if item.due_date.year == today_year && item.category == 'Inputs'
+      @cashflow_rent[item.due_date.month] += item.amount if item.due_date.year == today_year && item.category == 'Rent&Utilities'
     end
+     for i in 1..12 do
+      if @cashflow_payroll[i] + @cashflow_office[i] + @cashflow_input[i] + @cashflow_rent[i] > 0
+        @total_expenses[i] += @cashflow_payroll[i] + @cashflow_office[i] + @cashflow_input[i] + @cashflow_rent[i]  
+      end
+    end
+    @total_expenses = @total_expenses.sort_by {|k,v| k} 
+    @balance = Hash.new(0)
+    for i in 1..12 do
+      if @total_revenue[i]
+        if @total_expenses[i]
+          @balance[i] = @total_revenue[i] - @total_expenses[i]  
+        else
+          @balance[i] = @total_revenue[i]
+        end
+      else
+        if @total_expenses[i]
+          @balance[i] =  @total_expenses[i]  
+        end
+      end
+    end
+    @balance = @balance.sort_by {|k,v| k} 
   end
 
 
