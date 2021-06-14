@@ -74,6 +74,7 @@ class TablesController < ApplicationController
     if !table.update(table_params)
       flash[:alert] = table.errors.messages
     end
+    update_restaurant_rating(table) if table.rating
     redirect_to "/restaurants/#{table.restaurant.id}/spaces/#{table.number}/tables/#{table.id}"
   end
 
@@ -100,6 +101,19 @@ class TablesController < ApplicationController
       item.status = 'paid'
       item.save
     end
+  end
+
+  def update_restaurant_rating(table)
+    restaurant = table.restaurant
+    sum = 0
+    count = 0
+    restaurant.tables.where('rating > 0').each do |table|
+      sum += table.rating
+      count += 1
+    end
+    rating_avg = sum / count
+    restaurant.rating_avg = rating_avg
+    restaurant.save 
   end
 
   private
