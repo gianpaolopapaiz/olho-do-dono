@@ -16,11 +16,11 @@ class RestaurantsController < ApplicationController
     @month_order_qty = 0
     @day_amount = 0
     @day_order_qty = 0
-  
     items.each do |item|
       if item.updated_at.year == today_year
         @year_amount += item.product_quantity * item.product.price
         @year_order_qty += 1
+
         if item.updated_at.month == today_month
           @month_amount += item.product_quantity * item.product.price
           @month_order_qty += 1
@@ -82,8 +82,35 @@ class RestaurantsController < ApplicationController
 
   def cashflow
     @restaurant = Restaurant.find(params[:restaurant_id])
-    
+    items = @restaurant.order_items.where(status: 'paid')
+    today_year = Date.today.year
+    today_month = Date.today.month
+    today_day = Date.today.day
+    @cashflow_food = Hash.new(0)
+    @cashflow_beverage = Hash.new(0)
+    @cashflow_dessert = Hash.new(0)
+    items.each do |item|
+      if item.updated_at.year == today_year
+
+        @cashflow_food[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Food'
+        @cashflow_beverage[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Beverage'
+        @cashflow_dessert[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Dessert'
+
+      end
+    end
+    @cashflow_payroll = Hash.new(0)
+    @cashflow_rent = Hash.new(0)
+    @cashflow_input = Hash.new(0)
+    @cashflow_office = Hash.new(0)
+    expenses = @restaurant.expenses
+    expenses.each do |item|
+      @cashflow_payroll[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Payroll'
+      @cashflow_office[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Office'
+      @cashflow_input[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Inputs'
+      @cashflow_rent[item.updated_at.month] += item.amount if item.updated_at.year == today_year && item.category == 'Rent&Utilities'
+    end
   end
+
 
   def create
     @restaurant = Restaurant.new(restaurant_params)

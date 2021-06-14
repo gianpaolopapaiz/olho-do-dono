@@ -136,6 +136,7 @@ def insert_tables(rest)
 				order_item.product = rest.products.sample
 				order_item.product_quantity = rand(1..3)
 				order_item.status = 'paid'
+        order_item.updated_at = table.updated_at
 				order_item.save
 			end
 		end
