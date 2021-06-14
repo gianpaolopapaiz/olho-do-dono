@@ -3,6 +3,10 @@ class ExpensesController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     redirect_to restaurants_path if @restaurant.user != current_user
     @expenses = @restaurant.expenses
+    @payrolls = @expenses.where(category: 'Payroll')
+    @renteutilities = @expenses.where(category: 'Rent&Utilities')
+    @offices = @expenses.where(category: 'Office')
+    @inputs = @expenses.where(category: 'Inputs')
   end
     
   def new

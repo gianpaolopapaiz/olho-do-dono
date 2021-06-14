@@ -1,31 +1,119 @@
 <div class="olho-form-container">
-  <div class="olho-div">
-    <table class="table">
-    <h2 class="m-3"><strong>Expense List</strong></h2>
-      <thead>
-        <tr >
-          <th scope="col">Description</th>
-          <th scope="col">Category</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Due Date</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @expenses.each do |expense| %>
-        <tr>
-          <td><%= expense.description %></td>
-          <td><%= expense.category %></td>
-          <td><%= expense.amount %></td>
-          <td><%= expense.due_date %></td>
-          <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %>
-</td>
-          <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %>
-</td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <div class="olho-div p-3">
+    <h2 class="ml-2"><strong>Expense List</strong></h2>
+    
+      <div class="container scrollit">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Due Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <h6 class='text-center'><strong>Payroll</strong></h6>
+            <% if @payrolls.length > 0 %>
+              <div class="container d-flex align-items-center justify-content-start flex-wrap">
+                <% @payrolls.each do |expense| %>
+                  <tr>
+                    <td><%= expense.description %></td>
+                    <td><%= expense.amount %></td>
+                    <td><%= expense.due_date %></td>
+                    <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %></td>
+                  </tr>
+                <% end %>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Due Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <h6 class='text-center'><strong>Rent & Utilities</strong></h6>
+            <% if @renteutilities.length > 0 %>
+              <div class="container d-flex align-items-center justify-content-start flex-wrap">
+                <% @renteutilities.each do |expense| %>
+                  <tr>
+                    <td><%= expense.description %></td>
+                    <td><%= expense.amount %></td>
+                    <td><%= expense.due_date %></td>
+                    <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %></td>
+                  </tr>
+                <% end %>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Due Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <h6 class='text-center'><strong>Offices</strong></h6>
+            <% if @offices.length > 0 %>
+              <div class="container d-flex align-items-center justify-content-start flex-wrap">
+                <% @offices.each do |expense| %>
+                  <tr>
+                    <td><%= expense.description %></td>
+                    <td><%= expense.amount %></td>
+                    <td><%= expense.due_date %></td>
+                    <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %></td>
+                  </tr>
+                <% end %>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Due Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <h6 class='text-center'><strong>Inputs</strong></h6>
+            <% if @inputs.length > 0 %>
+              <div class="container d-flex align-items-center justify-content-start flex-wrap">
+                <% @inputs.each do |expense| %>
+                  <tr>
+                    <td><%= expense.description %></td>
+                    <td><%= expense.amount %></td>
+                    <td><%= expense.due_date %></td>
+                    <td><%= link_to 'delete', expense_path(expense), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <td><%= link_to 'edit', edit_expense_path(expense), class: 'olho-btn-card olho-green' %></td>
+                  </tr>
+                <% end %>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+
     <div class="m-3">
       <%= link_to "add expense", new_restaurant_expense_path(@restaurant), class: "btn btn-gradient" %>
       <%= link_to "back",  restaurant_path(@restaurant), class: "btn btn-back btn-sm" %>
