@@ -3,33 +3,20 @@
     <div class= "olho-grid-container">
       
       <!-- Column 1 -->
-      <div class=''>
+      <div class='d-flex flex-column justify-content-between'>
         <% if @restaurant.photo.attached? %>
-          <%= cl_image_tag @restaurant.photo.key %>
-        <% else %>
-          <%= image_tag('no-photo.jpg') %>
+          <div class='olho-div py-3 overflow-auto' style="background:url('<%= cl_image_path @restaurant.photo.key %>');background-size: cover; height:262px;">
+          </div>
         <% end %>
-        <p><%= @restaurant.name %></p>
-        <p>Table: <%= @table.number %></p>
-        <p>Status: <%= @table.status %></p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <p>Have you ever tried this? </p>
-        <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover;">
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+        <div>
+          <h3><strong><%= @restaurant.name %></strong></h3>
+          <h5><strong>Table:</strong> <%= @table.number %></h5>
+          <h5><strong>Status:</strong> <%= @table.status %></h5>
+        </div>
+        <div>
+          <p>Have you ever tried this? </p>
+          <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover; height:262px;">
+          </div>
         </div>
       </div>
 
@@ -66,7 +53,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2 olho-table', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -94,7 +81,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -122,7 +109,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -150,7 +137,7 @@
                           <%= simple_form_for([@table, @order_item], html: { class: "d-flex align-items-center"}) do |f| %>
                               <%= f.input :product_quantity, label: false, collection: 1..10, selected: 1, input_html: { class: "p-0 h-50 w-100" }, wrapper_html: { class: "m-0" } %>
                               <%= f.input :product_id, label: false, input_html: {value: "#{product.id}", class: 'd-none'} %>
-                              <%= f.submit 'add', class: 'olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
+                              <%= f.submit 'add', class: 'olho-table olho-btn-card olho-green ml-2', wrapper_html: { class: "m-0" } %>
                           <% end %>
                         </div>
                       </div>
@@ -186,8 +173,8 @@
               <%= f.input :comment %>
             </div>
             <div class="form-actions d-flex items-align-center justify-content-between w-100">
-              <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3 mr-2' %>
-              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-form-button olho-btn olho-red mt-3 ml-2' %>
+              <%= f.submit 'Rate', class: 'olho-table olho-form-button olho-btn olho-green mt-3 mr-2' %>
+              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-table olho-form-button olho-btn olho-red mt-3 ml-2' %>
             </div>
           <% end %>
           </div>
@@ -225,11 +212,11 @@
           
           <!-- Button trigger modal -->
           <% if !@table.payment_type %>
-            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
+            <button type="button" class="olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
               Checkout
             </button>
           <% else %>
-            <button type="button" class="olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
+            <button type="button" class=" olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
               Checkout
             </button>
           <% end %>
@@ -256,7 +243,7 @@
                                   collection: %w[Credit Debit Cash] %>
                     </div>
                     <div class="form-actions">
-                      <%= f.submit 'PAY', class: 'olho-form-button olho-btn olho-green mt-3' %>
+                      <%= f.submit 'PAY', class: 'olho-table olho-form-button olho-btn olho-green mt-3' %>
                     </div>
                   <% end %>
                 </div>
