@@ -21,7 +21,9 @@
               <h6 class="card-text"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
               <br>
               <div style="text-align: right;">
-                <%= link_to 'Show',  restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green' %>
+                <%= link_to 'Menu',  restaurant_products_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
+                <%= link_to 'Expenses',  restaurant_expenses_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
+                <%= link_to 'Dashboard',  restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
               </div>
             </div>
           </div>
