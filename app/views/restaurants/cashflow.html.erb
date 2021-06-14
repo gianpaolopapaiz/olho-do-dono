@@ -1,8 +1,16 @@
 <div class="olho-form-container">
-  <div class="container olho-div">
-    <br>
+  <br>
+  <div class="olho-div w-75 p-5">
     <h2> Restaurant Cash-Flow - Year 2021</h2>
+    <%= line_chart [
+      {name: "Revenue", data: @total_revenue, xtitle: "Month", ytitle: "Amount", label: "Revenue", prefix: "$", thousands: ".", decimal: ","},
+      {name: "Expenses", data: @total_expenses, label: "Expenses", prefix: "$", thousands: ".", decimal: ","}
+    ] %>
     <br>
+  </div>
+  <br>
+  <br>
+  <div class="olho-div w-75 p-5">
     <h5> Revenues </h5>
     <table class="table">
       <thead>
@@ -128,4 +136,6 @@
     </div>
 
   </div>
+  <br>
+
 </div>
