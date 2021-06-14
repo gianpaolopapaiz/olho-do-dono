@@ -3,33 +3,20 @@
     <div class= "olho-grid-container">
       
       <!-- Column 1 -->
-      <div class=''>
+      <div class='d-flex flex-column justify-content-between'>
         <% if @restaurant.photo.attached? %>
-          <%= cl_image_tag @restaurant.photo.key %>
-        <% else %>
-          <%= image_tag('no-photo.jpg') %>
+          <div class='olho-div py-3 overflow-auto' style="background:url('<%= cl_image_path @restaurant.photo.key %>');background-size: cover; height:262px;">
+          </div>
         <% end %>
-        <p><%= @restaurant.name %></p>
-        <p>Table: <%= @table.number %></p>
-        <p>Status: <%= @table.status %></p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <p>Have you ever tried this? </p>
-        <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover;">
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+        <div>
+          <h3><strong><%= @restaurant.name %></strong></h3>
+          <h5><strong>Table:</strong> <%= @table.number %></h5>
+          <h5><strong>Status:</strong> <%= @table.status %></h5>
+        </div>
+        <div>
+          <p>Have you ever tried this? </p>
+          <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover; height:262px;">
+          </div>
         </div>
       </div>
 
