@@ -74,6 +74,8 @@ class RestaurantsController < ApplicationController
     total = 0
     dessert_amount_hash.each {|k, v| total += v }
     @tot_amount3 ="$#{total}0"
+
+    @comment_tables = @restaurant.tables.where("comment != ''").order(updated_at: :desc)
   end
 
   def new
