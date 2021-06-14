@@ -12,6 +12,20 @@
   padding: 10px;
 }
 
+.olho-form-container-about {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 67px);
+  height: fit;
+  align-items: center;
+  justify-content: center;
+  background-image: image-url("homepage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
 .olho-form {
   max-width: 380px;
   padding: 30px;
