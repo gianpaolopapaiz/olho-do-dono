@@ -173,8 +173,8 @@
               <%= f.input :comment %>
             </div>
             <div class="form-actions d-flex items-align-center justify-content-between w-100">
-              <%= f.submit 'Rate', class: 'olho-form-button olho-btn olho-green mt-3 mr-2' %>
-              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-form-button olho-btn olho-red mt-3 ml-2' %>
+              <%= f.submit 'Rate', class: 'olho-table olho-form-button olho-btn olho-green mt-3 mr-2' %>
+              <%= link_to 'skip', "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/new", class: 'olho-table olho-form-button olho-btn olho-red mt-3 ml-2' %>
             </div>
           <% end %>
           </div>
@@ -243,7 +243,7 @@
                                   collection: %w[Credit Debit Cash] %>
                     </div>
                     <div class="form-actions">
-                      <%= f.submit 'PAY', class: 'olho-form-button olho-btn olho-green mt-3' %>
+                      <%= f.submit 'PAY', class: 'olho-table olho-form-button olho-btn olho-green mt-3' %>
                     </div>
                   <% end %>
                 </div>
