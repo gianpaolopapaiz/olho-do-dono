@@ -1,8 +1,8 @@
 .banner {
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   padding: 250px 0;
-  min-height: 100vh;
+  min-height: calc(100vh - 67px);
 }
 
 .banner h1 {
