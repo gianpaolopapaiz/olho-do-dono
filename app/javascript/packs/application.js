@@ -27,6 +27,7 @@ import "bootstrap";
 import "chartkick/chart.js";
 import { initRestaurantCable } from '../channels/restaurant_channel';
 import { initTableCable } from '../channels/table_channel';
+import { removeFooterNavbar } from '../components/remove_footer_navbar';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -37,5 +38,8 @@ document.addEventListener('turbolinks:load', () => {
   initTableCable();
   if (document.getElementById('reload-js')) {
     paymentReload();
+  }
+  if (document.getElementById('table-page') || document.getElementById('kitchen-page')) {
+    removeFooterNavbar();
   }
 });
