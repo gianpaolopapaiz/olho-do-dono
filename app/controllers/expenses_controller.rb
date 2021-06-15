@@ -51,12 +51,6 @@ class ExpensesController < ApplicationController
     redirect_to restaurant_expenses_path(@expense.restaurant)
   end
 
-  def destroy
-    @expense = Expense.find(params[:id])
-    @expense.destroy
-    redirect_to restaurant_expenses_path(@expense.restaurant)
-  end
-
   private
 
   def expense_params
