@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get '/spaces/:number/tables/:id', to: 'tables#show', as: 'table_show'
     get '/tables/:id/close', to: 'tables#close', as: 'table_close'
     get '/cashflow', to: 'restaurants#cashflow', as: 'cashflow'
+    resources :terminals, only: [ :index, :show, :new, :create ]
   end
   resources :tables, only: [:update] do
     resources :order_items, only: [:create]
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   resources :products, only: [ :edit, :update, :destroy ]
   resources :expenses, only: [ :edit, :update, :destroy ]
   resources :order_items, only: [:destroy]
+  resources :terminals, only: [ :edit, :update, :destroy ]
 end

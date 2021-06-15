@@ -1,0 +1,31 @@
+<div class="olho-form-container">
+  <div class="olho-form container olho-div">
+    <h2>Edit Terminal</h2>
+    <%= simple_form_for(@terminal) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :name,
+                    required: true %>
+        <%= f.input :flag,
+                    required: true, 
+                    collection: %w[Mastercard Visa Amex VisaElectron Maestro] %>
+        <%= f.input :payment_type,
+                    required: true, 
+                    collection: %w[Credit Debit] %>
+        <%= f.input :payment_day,
+                    required: true %>
+        <%= f.input :closing_day,
+                    required: true %>
+        <%= f.input :fee_percentage,
+                    required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: 'olho-form-button olho-btn olho-green' %>
+      </div>
+      <%= link_to "back", restaurant_terminals_path(@terminal.restaurant), class: "btn btn-back btn-sm" %>
+
+    <% end %>
+  </div>
+</div>
