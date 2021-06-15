@@ -11,8 +11,10 @@ const initTableCable = () => {
         const orderItemId = responseArray[0];
         const orderItemStatus = responseArray[1];
         const orderItemStatusDiv = document.getElementById(`${orderItemId}`)
+        const orderItemRemoveDiv = document.getElementById(`${orderItemId}-remove`)
         if (orderItemStatusDiv) {
           orderItemStatusDiv.innerText = orderItemStatus;
+          orderItemRemoveDiv.innerText = '';
         };
       },
     });

@@ -199,7 +199,7 @@
             <p><%= number_to_currency(order_item.product.price * order_item.product_quantity) %></p>
             <p id='<%= order_item.id %>'><%= order_item.status %></p>
             <% if order_item.status == 'placed' %>
-              <%= link_to 'X', order_item_path(order_item), class: 'olho-color-red', method: :delete, data: { confirm: "Are you sure?" } %>
+              <p id='<%= order_item.id %>-remove'><%= link_to 'X', order_item_path(order_item), class: 'olho-color-red', method: :delete, data: { confirm: "Are you sure?" } %></p>
             <% else %>
               <p></p>
             <% end %>
