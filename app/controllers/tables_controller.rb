@@ -19,7 +19,8 @@ class TablesController < ApplicationController
     end
     
     if @table.status == 'waiting'
-      close_order_items
+      close_order_items_add_amount_fee
+      add_due_payment_due_date
       sleep(5)
       @table.status = 'closed'
       @table.save
@@ -27,7 +28,7 @@ class TablesController < ApplicationController
       # render :show
     end
     
-    if @table.payment_type && @table.status == 'open'
+    if @table.terminal && @table.status == 'open'
       @table.status = 'waiting'
       @table.save
       # redirect_to "/restaurants/#{@table.restaurant.id}/spaces/#{@table.number}/tables/#{@table.id}"
@@ -71,6 +72,11 @@ class TablesController < ApplicationController
 
   def update
     table = Table.find(params[:id])
+    if params[:table][:terminal_id]
+      terminal = Terminal.find(params[:table][:terminal_id])
+      table.terminal = terminal
+      table.save
+    end
     if !table.update(table_params)
       flash[:alert] = table.errors.messages
     end
@@ -94,13 +100,32 @@ class TablesController < ApplicationController
     end
   end
   
-  def close_order_items
+  def close_order_items_add_amount_fee
     table = Table.find(params[:id])
     order_items = table.order_items
+    order_amount = 0
     order_items.each do |item|
+      order_amount += item.product.price * item.product_quantity
       item.status = 'paid'
       item.save
     end
+    table.order_amount = order_amount
+    table.payment_fee_amount = table.terminal.fee_percentage
+    table.save
+  end
+
+  def add_due_payment_due_date
+    table = Table.find(params[:id])
+    payment_day = table.terminal.payment_day
+    closing_day = table.terminal.closing_day
+    payment_date = Date.new(Date.today.year, Date.today.month, payment_day)
+    now_date = Date.today
+    if now_date < payment_date
+      table.payment_due_date = payment_date
+    else   
+      table.payment_due_date = payment_date + 1.month
+    end
+    table.save
   end
 
   def update_restaurant_rating(table)
@@ -119,7 +144,7 @@ class TablesController < ApplicationController
   private
 
   def table_params
-    params.require(:table).permit(:payment_type, :rating, :comment)
+    params.require(:table).permit(:rating, :comment)
   end
 
 

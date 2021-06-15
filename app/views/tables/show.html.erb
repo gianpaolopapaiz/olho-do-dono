@@ -21,7 +21,7 @@
       </div>
 
       <!-- Column 2 -->
-      <% if !@table.payment_type %>
+      <% if @table.status == 'open' %>
         <!-- Product List-->
         <div class='olho-div py-3 overflow-auto'>
           <h2 class='text-center'>Menu</h2>
@@ -209,7 +209,7 @@
           <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
           
           <!-- Button trigger modal -->
-          <% if !@table.payment_type %>
+          <% if @table.status == 'open' %>
             <button type="button" class="olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
               Checkout
             </button>
@@ -234,11 +234,7 @@
                   <h3 class='mb-4'>Payment Method</h3>
                   <%= simple_form_for(@table) do |f| %>
                     <div class="form-inputs">
-                      <%= f.input :payment_type,
-                                  required: true,
-                                  as: :radio_buttons,
-                                  label: 'Choose an option:',
-                                  collection: %w[Credit Debit Cash] %>
+                      <%= f.association :terminal, label: 'Choose an option:' %>
                     </div>
                     <div class="form-actions">
                       <%= f.submit 'PAY', class: 'olho-table olho-form-button olho-btn olho-green mt-3' %>
