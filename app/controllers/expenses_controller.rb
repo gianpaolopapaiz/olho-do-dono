@@ -3,10 +3,10 @@ class ExpensesController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     redirect_to restaurants_path if @restaurant.user != current_user
     @expenses = @restaurant.expenses
-    @payrolls = @expenses.where(category: 'Payroll')
-    @renteutilities = @expenses.where(category: 'Rent&Utilities')
-    @offices = @expenses.where(category: 'Office')
-    @inputs = @expenses.where(category: 'Inputs')
+    @payrolls = @expenses.where(category: 'Payroll').order(due_date: :asc)
+    @renteutilities = @expenses.where(category: 'Rent&Utilities').order(due_date: :asc)
+    @offices = @expenses.where(category: 'Office').order(due_date: :asc)
+    @inputs = @expenses.where(category: 'Inputs').order(due_date: :asc)
   end
     
   def new
@@ -27,6 +27,7 @@ class ExpensesController < ApplicationController
       flash[:error] = "Something went wrong"
       render :new
     end
+
   end
 
   def edit
