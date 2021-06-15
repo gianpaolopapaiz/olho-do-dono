@@ -26,6 +26,7 @@ import { paymentReload } from '../components/payment_reload'
 import "bootstrap";
 import "chartkick/chart.js";
 import { initRestaurantCable } from '../channels/restaurant_channel';
+import { initTableCable } from '../channels/table_channel';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -33,6 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initRestaurantCable();
+  initTableCable();
   if (document.getElementById('reload-js')) {
     paymentReload();
   }

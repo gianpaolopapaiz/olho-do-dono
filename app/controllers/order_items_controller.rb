@@ -35,6 +35,10 @@ class OrderItemsController < ApplicationController
       order_item.status = 'ready'
     end
     if order_item.save 
+      TableChannel.broadcast_to(
+        order_item.table,
+        render_to_string(partial: "order_item_status", locals: { order_item: order_item })
+      )
       redirect_to restaurant_order_items_path(order_item.table.restaurant)
     else
       flash[:alert] = 'Something went wrong'
