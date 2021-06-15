@@ -76,6 +76,7 @@
   text-decoration: underline;
 }
 
+
 .olho-kitchen-border-green {
   border: #939b62 2px solid ;
   color: #939b62; 
@@ -110,3 +111,28 @@
   color: white; 
   background-color: #939b62;
 }
+.fa-credit-card, .fa-clipboard-list, .fa-file-invoice-dollar, .fa-chart-bar {
+  color:#939b62;
+}
+
+.fa-credit-card:hover { 
+  text-decoration: none;
+  
+}
+
+.fa-clipboard-list:hover {
+  text-decoration: none;
+  
+}
+
+.fa-file-invoice-dollar:hover {
+  text-decoration: none;
+} 
+
+.fa-chart-bar:hover {
+  text-decoration: none;
+} 
+
+.qualquer:hover {
+  text-decoration: none;
+} 

@@ -6,8 +6,7 @@
       <div class="d-flex flex-wrap ">
 
         <% @restaurants.each do |restaurant| %>
-          <div class="card mx-3 mt-3" style="width: 18rem;">
- 
+          <div class="card mx-3 mt-3" style="width: 18rem;"> 
             <% if restaurant.photo.attached? %>
               <%= cl_image_tag restaurant.photo.key, crop: :fill %>
             <% else %>
@@ -19,18 +18,26 @@
               <br>
               <h6 class="card-text "><strong>Endereço:</strong> <%=restaurant.address%></h6>
               <h6 class="card-text"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
-              <br>
               <div style="text-align: right;">
-                <%= link_to 'Menu',  restaurant_products_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
-                <%= link_to 'Expenses',  restaurant_expenses_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
-                <%= link_to 'Dashboard',  restaurant_path(restaurant), class: 'olho-form-button olho-btn olho-green btn-sm' %>
+                <span style="font-size: 30px">
+                  <%= link_to restaurant_products_path(restaurant), class: 'qualquer' do%>
+                    <i class="fas fa-clipboard-list"></i>
+                  <% end %>
+                  <%= link_to restaurant_terminals_path(restaurant), class: 'qualquer'  do%>
+                    <i class="far fa-credit-card"></i>
+                  <% end %>
+                  <%= link_to restaurant_expenses_path(restaurant), class: 'qualquer'  do%>
+                    <i class="fas fa-file-invoice-dollar"></i>
+                  <% end %>
+                  <%= link_to restaurant_path(restaurant), class: 'qualquer'  do%>
+                    <i class="far fa-chart-bar"></i>
+                  <% end %>
+                </span>
               </div>
             </div>
           </div>
        <%end%>
       </div>
-
-      <br>
       <br>
       <div class="d-flex align-items-center justify-content-between">
         <%= link_to 'New Restaurant', new_restaurant_path, class: 'olho-btn olho-green' %>
