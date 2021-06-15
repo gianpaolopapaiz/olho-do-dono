@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_135636) do
+ActiveRecord::Schema.define(version: 2021_06_15_175339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,7 +91,10 @@ ActiveRecord::Schema.define(version: 2021_06_15_135636) do
     t.integer "rating"
     t.text "comment"
     t.string "status", default: "available"
+    t.bigint "terminal_id"
+    t.datetime "payment_due_date"
     t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
+    t.index ["terminal_id"], name: "index_tables_on_terminal_id"
   end
 
   create_table "terminals", force: :cascade do |t|
@@ -129,5 +132,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_135636) do
   add_foreign_key "products", "restaurants"
   add_foreign_key "restaurants", "users"
   add_foreign_key "tables", "restaurants"
+  add_foreign_key "tables", "terminals"
   add_foreign_key "terminals", "restaurants"
 end
