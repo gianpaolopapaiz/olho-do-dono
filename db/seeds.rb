@@ -111,22 +111,57 @@ def insert_products(rest)
     puts "Product #{produto.id} - #{produto.name} created"
 end
 
+def insert_terminal(rest)
+  terminal1 = Terminal.new()
+  terminal1.name = 'Credit - Visa - Moderninha'
+  terminal1.flag = 'Visa'
+  terminal1.payment_type = 'Credit'
+  terminal1.payment_day = 20
+  terminal1.closing_day = 15
+  terminal1.fee_percentage = 1
+  terminal1.restaurant = rest
+  terminal1.save
+  puts "terminal 1 created"
+  terminal2 = Terminal.new()
+  terminal2.name = 'Credit - Mastercard - Moderninha'
+  terminal2.flag = 'Mastercard'
+  terminal2.payment_type = 'Credit'
+  terminal2.payment_day = 25
+  terminal2.closing_day = 20
+  terminal2.fee_percentage = 1.5
+  terminal2.restaurant = rest
+  terminal2.save
+  puts "terminal 2 created"
+  terminal3 = Terminal.new()
+  terminal3.name = 'Debit - Maestro - Stone'
+  terminal3.flag = 'Maestro'
+  terminal3.payment_type = 'Debit'
+  terminal3.payment_day = 30
+  terminal3.closing_day = 25
+  terminal3.fee_percentage = 2
+  terminal3.restaurant = rest
+  terminal3.save
+  puts "terminal 3 created"
+end
+
 def insert_tables(rest)
 	t1 = Time.parse("2021-01-02 12:00:00")
 	t2 = Time.parse("2021-06-10 23:00:00")
 	#table
-	20.times do
+	30.times do
 		8.times do |index|
 			puts "Adding table to space #{index + 1}"
 			table = Table.new()
 			table.restaurant = rest
 			table.number = index + 1
-			table.payment_type = %w[Credit Debit Cash].sample
+			table.terminal = Terminal.find(rand(1..3))
 			table.rating = rand(1..5)
 			table.comment = 'Comment'
 			table.status = 'closed'
 			table.save
-			table.updated_at = rand(t1..t2)
+			table.payment_due_date = rand(t1..t2)
+      table.updated_at = rand(t1..t2)
+      table.payment_fee_amount = table.terminal.fee_percentage 
 			table.save
 			#order_items
 			5.times do
@@ -151,7 +186,7 @@ def insert_expenses(rest)
 		exp = Expense.new
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
-		exp.category = ['Payroll', 'Rent&Utilities', 'Office Inputs'].sample
+		exp.category = ['Payroll', 'Rent&Utilities', 'Office', 'Inputs'].sample
 		exp.description = "product for #{exp.category}"
 		exp.amount = rand(500...5000)
 		exp.save
@@ -164,6 +199,7 @@ Expense.destroy_all
 Product.destroy_all
 Table.destroy_all
 Restaurant.destroy_all
+Terminal.destroy_all
 User.destroy_all
 
 puts 'Creating fake users...'
@@ -191,6 +227,7 @@ restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', con
 restaurante.save
 puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 insert_products(restaurante.id)
+insert_terminal(restaurante)
 insert_tables(restaurante)
 insert_expenses(restaurante)
 
