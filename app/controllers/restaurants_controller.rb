@@ -111,9 +111,9 @@ class RestaurantsController < ApplicationController
     items.each do |item|
       if item.table.payment_due_date.year == today_year
 
-        @cashflow_food[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) if item.product.category == 'Food'
-        @cashflow_beverage[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) == 'Beverage'
-        @cashflow_dessert[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) if item.product.category == 'Dessert'
+        @cashflow_food[item.table.payment_due_date.month] += item.product_quantity * item.product.price  if item.product.category == 'Food'
+        @cashflow_beverage[item.table.payment_due_date.month] += item.product_quantity * item.product.price if item.product.category == 'Beverage'
+        @cashflow_dessert[item.table.payment_due_date.month] += item.product_quantity * item.product.price if item.product.category == 'Dessert'
       end
     end
     for i in 1..12 do
