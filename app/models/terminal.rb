@@ -1,5 +1,6 @@
 class Terminal < ApplicationRecord
   belongs_to :restaurant
+  has_many :tables
   has_one_attached :photo
   validates :name, :flag, :payment_type, :payment_day, :closing_day, :fee_percentage, presence: true
   validates :flag, inclusion: { in: %w[Mastercard Visa Amex VisaElectron Maestro]}

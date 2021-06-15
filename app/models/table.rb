@@ -1,5 +1,6 @@
 class Table < ApplicationRecord
   belongs_to :restaurant
+  belongs_to :terminal, optional: true
   has_many :order_items
   has_many :products, through: :order_items
   validates :number, :status, presence: true
