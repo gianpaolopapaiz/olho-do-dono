@@ -1,0 +1,43 @@
+<div class="olho-form-container">
+  <div class="olho-div p-3">
+    <h2 class="ml-2"><strong>Terminals List</strong></h2>
+    
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Flag</th>
+              <th scope="col">Type</th>
+              <th scope="col">Payment Day</th>
+              <th scope="col">Closing Day</th>
+              <th scope="col">Fee Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @terminals.length > 0 %>
+              <div class="container d-flex align-items-center justify-content-start flex-wrap">
+                <% @terminals.each do |terminal| %>
+                  <tr>
+                    <td><%= terminal.name %></td>
+                    <td><%= terminal.flag %></td>
+                    <td><%= terminal.payment_type %></td>
+                    <td><%= terminal.payment_day %></td>
+                    <td><%= terminal.closing_day %></td>
+                    <td><%= terminal.fee_percentage %>%</td>
+                    <td><%= link_to 'delete', terminal_path(terminal), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %></td>
+                    <td><%= link_to 'edit', edit_terminal_path(terminal), class: 'olho-btn-card olho-green' %></td>
+                  </tr>
+                <% end %>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+    <div class="m-3">
+      <%= link_to "Add Terminal", new_restaurant_terminal_path(@restaurant), class: "btn btn-gradient" %>
+      <%= link_to "Back",  restaurants_path, class: "btn btn-back btn-sm" %>
+    </div>
+
+  </div>
+</div>
