@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
   resources :products, only: [ :edit, :update, :destroy ]
   resources :expenses, only: [ :edit, :update, :destroy ]
-  resources :order_items, only: [:destroy]
+  resources :order_items, only: [:destroy, :update]
   resources :terminals, only: [ :edit, :update, :destroy ]
 end
