@@ -76,6 +76,41 @@
   text-decoration: underline;
 }
 
+
+.olho-kitchen-border-green {
+  border: #939b62 2px solid ;
+  color: #939b62; 
+}
+
+.olho-kitchen-border-green:hover {
+  color: #939b62; 
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+}
+
+.olho-kitchen-border-orange {
+  border: #ffb26b 2px solid;
+  color: #ffa653;
+}
+.olho-kitchen-border-orange:hover {
+  color: white;
+  background-color: #ffb26b;
+}
+
+.olho-kitchen-border-orange-on {
+  color: white;
+  background-color: #ffb26b;
+  box-shadow: 0 0px 0px rgba(0,0,0,0.4);
+}
+
+.olho-kitchen-border-green-on {
+  border: #939b62 2px solid ;
+  color: #939b62; 
+}
+
+.olho-kitchen-border-green-on:hover {
+  color: white; 
+  background-color: #939b62;
+
 .fa-credit-card, .fa-clipboard-list, .fa-file-invoice-dollar, .fa-chart-bar {
   color:#939b62;
 }

@@ -185,27 +185,25 @@
       <div class='olho-div py-3 p-3'>
         <h2 class='text-center'>Bill</h2>
         
-        <div class='olho-grid-container-bill'>
-            <p>Item</p>
-            <p>Qnt</p>
-            <p>Unit</p>
-            <p>Total</p>
-            <p>Status</p>
-            <p></p>
-            
+        <div class='olho-grid-container-bill' data-table-id="<%= @table.id %>" id="order-items-table">
+          <p>Item</p>
+          <p>Qnt</p>
+          <p>Unit</p>
+          <p>Total</p>
+          <p>Status</p>
+          <p></p>
           <% @order_items.each do |order_item| %>
             <p><%= order_item.product.name %></p>
             <p class='ml-2'><%= order_item.product_quantity %></p>
             <p><%= number_to_currency(order_item.product.price) %></p>
             <p><%= number_to_currency(order_item.product.price * order_item.product_quantity) %></p>
-            <p><%= order_item.status %></p>
-            <% if order_item.status = 'placed' %>
-              <%= link_to 'X', order_item_path(order_item), class: 'olho-color-red', method: :delete, data: { confirm: "Are you sure?" } %>
+            <p id='<%= order_item.id %>'><%= order_item.status %></p>
+            <% if order_item.status == 'placed' %>
+              <p id='<%= order_item.id %>-remove'><%= link_to 'X', order_item_path(order_item), class: 'olho-color-red', method: :delete, data: { confirm: "Are you sure?" } %></p>
             <% else %>
               <p></p>
             <% end %>
           <% end %>
-        
         </div>
         <div class='w-100 text-right' style='height: fill'>
           <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>

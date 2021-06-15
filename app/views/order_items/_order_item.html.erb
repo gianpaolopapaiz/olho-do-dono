@@ -2,13 +2,12 @@
   <td><%= order_item.table.number %></td>
   <td><%= order_item.product.name %></td>
   <td><%= order_item.product_quantity %></td>
-  <td><%= "#{order_item.created_at.hour-3}:#{order_item.created_at.min}" %></td>
+  <td><%= (order_item.created_at - 3.hours).strftime("%H:%M") %></td>
   <% if order_item.status == 'placed'  %>
-    <td><%= link_to 'prepare', order_item_path(order_item), method: 'patch', class: 'btn btn-outline-warning btn-sm' %></td>
-    <td><%= link_to 'ready', '#', class: 'btn btn-outline-success btn-sm' %></td>
-  <% elsif order_item.status == 'preparing' %>
-    <td><%= link_to 'preparing', '#', class: 'btn btn-outline-warning btn-sm' %></td>
-    <td><%= link_to 'ready', order_item_path(order_item), method: 'patch', class: 'btn btn-outline-success btn-sm' %></td> 
+    <td><%= link_to 'prepare', order_item_path(order_item), method: 'patch', class: 'olho-btn btn-sm olho-kitchen-border-orange' %></td>
+    <td><%= link_to 'ready', '#', class: 'olho-btn btn-sm olho-kitchen-border-green' %></td>
+  <% elsif order_item.status == 'preparing' %></td>
+    <td><%= link_to 'preparing', '#', class: 'olho-btn btn-sm olho-kitchen-border-orange-on' %>
+    <td><%= link_to 'ready', order_item_path(order_item), method: 'patch', class: 'olho-btn btn-sm  olho-kitchen-border-green-on' %></td> 
   <% end %>
-  
 </tr>

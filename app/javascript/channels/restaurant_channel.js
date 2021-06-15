@@ -11,7 +11,6 @@ const initRestaurantCable = () => {
       },
     });
   }
-  
 }
 
 export { initRestaurantCable };
