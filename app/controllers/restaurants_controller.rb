@@ -53,12 +53,6 @@ class RestaurantsController < ApplicationController
     dessert_qty_hash = dessert_qty_hash.sort_by {|k,v| v}.reverse    
     dessert_amount_hash = dessert_orders.each_with_object(Hash.new(0)) {|item, hash| hash[item.product.name] += item.product_quantity * item.product.price }
     dessert_amount_hash = dessert_amount_hash.sort_by {|k,v| v}.reverse
-    #@item1 = ""
-    #@item2 = ""
-    #@item3 = ""
-    # @item1 = "#{food_qty_hash[0][0]} (#{food_qty_hash[0][1]})" if food_orders.count > 0
-    # @item2 = "#{beverage_qty_hash[0][0]} (#{beverage_qty_hash[0][1]})" if beverage_orders.count > 0
-    # @item3 = "#{dessert_qty_hash[0][0]} (#{dessert_qty_hash[0][1]})" if dessert_orders.count > 0
     if food_orders.count > 0
       @item1_name = food_qty_hash[0][0] 
       @item1 = food_qty_hash[0][1]
@@ -105,7 +99,6 @@ class RestaurantsController < ApplicationController
 
   def cashflow
     @restaurant = Restaurant.find(params[:restaurant_id])
-    items = @restaurant.order_items.where(status: 'paid')
     today_year = Date.today.year
     today_month = Date.today.month
     today_day = Date.today.day
@@ -113,12 +106,14 @@ class RestaurantsController < ApplicationController
     @cashflow_beverage = Hash.new(0)
     @cashflow_dessert = Hash.new(0)
     @total_revenue = Hash.new(0)
-    items.each do |item|
-      if item.updated_at.year == today_year
 
-        @cashflow_food[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Food'
-        @cashflow_beverage[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Beverage'
-        @cashflow_dessert[item.updated_at.month] += item.product_quantity * item.product.price if item.product.category == 'Dessert'
+    items = @restaurant.order_items.where(status: 'paid')
+    items.each do |item|
+      if item.table.payment_due_date.year == today_year
+
+        @cashflow_food[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) if item.product.category == 'Food'
+        @cashflow_beverage[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) == 'Beverage'
+        @cashflow_dessert[item.table.payment_due_date.month] += ((item.product_quantity * item.product.price) * (1 - (item.table.payment_fee_amount /100))) if item.product.category == 'Dessert'
       end
     end
     for i in 1..12 do
