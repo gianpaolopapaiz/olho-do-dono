@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_175339) do
+ActiveRecord::Schema.define(version: 2021_06_15_183556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 2021_06_15_175339) do
     t.string "status", default: "available"
     t.bigint "terminal_id"
     t.datetime "payment_due_date"
+    t.float "payment_fee_amount"
+    t.float "order_amount"
     t.index ["restaurant_id"], name: "index_tables_on_restaurant_id"
     t.index ["terminal_id"], name: "index_tables_on_terminal_id"
   end
