@@ -1,9 +1,10 @@
 <div class="olho-form-container">
-  <div class="container olho-div">
-    <h2>Restaurants</h2>
+  <div class="container olho-div p-3">
+    <h2><strong>Restaurants</strong></h2>
     <p>Your restaurants list:</p>
+    
     <% if user_signed_in? %>
-      <div class="d-flex flex-wrap ">
+      <div class="container d-flex align-items-center justify-content-start flex-wrap">
 
         <% @restaurants.each do |restaurant| %>
           <div class="card mx-3 mt-3" style="width: 18rem;"> 
