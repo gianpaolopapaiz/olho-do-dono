@@ -20,19 +20,19 @@
               <h6 class="card-text"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
               <div style="text-align: right;">
                 <span style="font-size: 30px">
-                  <%= link_to restaurant_products_path(restaurant) do%>
+                  <%= link_to restaurant_products_path(restaurant), class: 'qualquer' do%>
                     <i class="fas fa-clipboard-list"></i>
                   <% end %>
-                  <%= link_to restaurant_terminals_path(restaurant) do%>
+                  <%= link_to restaurant_terminals_path(restaurant), class: 'qualquer'  do%>
                     <i class="far fa-credit-card"></i>
                   <% end %>
-                  <%= link_to restaurant_expenses_path(restaurant) do%>
+                  <%= link_to restaurant_expenses_path(restaurant), class: 'qualquer'  do%>
                     <i class="fas fa-file-invoice-dollar"></i>
                   <% end %>
-                  <%= link_to restaurant_path(restaurant) do%>
+                  <%= link_to restaurant_path(restaurant), class: 'qualquer'  do%>
                     <i class="far fa-chart-bar"></i>
                   <% end %>
-                </spam>
+                </span>
               </div>
             </div>
           </div>
