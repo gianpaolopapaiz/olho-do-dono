@@ -47,10 +47,16 @@ class OrderItemsController < ApplicationController
 
   def destroy
     order_item = OrderItem.find(params[:id])
-    if !order_item.destroy
+    if order_item.destroy
+      RestaurantChannel.broadcast_to(
+        order_item.table.restaurant,
+        render_to_string(partial: "order_item_remove", locals: { order_item: order_item })
+      )
+      redirect_to "/restaurants/#{order_item.table.restaurant.id}/spaces/#{order_item.table.number}/tables/#{order_item.table.id}"
+    else
       flash[:alert] = 'Something went wrong'
+      redirect_to "/restaurants/#{order_item.table.restaurant.id}/spaces/#{order_item.table.number}/tables/#{order_item.table.id}"
     end
-    redirect_to "/restaurants/#{order_item.table.restaurant.id}/spaces/#{order_item.table.number}/tables/#{order_item.table.id}"
   end
 
 end
