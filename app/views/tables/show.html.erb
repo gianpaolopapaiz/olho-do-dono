@@ -8,7 +8,7 @@
           <div class='olho-div py-3 overflow-auto' style="background:url('<%= cl_image_path @restaurant.photo.key %>');background-size: cover; height:262px;">
           </div>
         <% end %>
-        <div>
+        <div class='text-center'>
           <h3><strong><%= @restaurant.name %></strong></h3>
           <h5><strong>Table:</strong> <%= @table.number %></h5>
           <h5><strong>Status:</strong> <%= @table.status %></h5>
@@ -154,19 +154,19 @@
 
       <% elsif @table.status == 'waiting' %>
         <!-- Waiting Payment-->
-        <div id='reload-js' class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+        <div id='reload-js' class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center menu-background'>
           <div class='olho-div olho-form olho-green text-white text-center'>
            <h1>Waiting for Payment Confirmation</h1>
           </div>
         </div>
       <% else %>
         <!-- Thanks and Rating -->
-        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center'>
+        <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center menu-background'>
           <div class='olho-div olho-form-end text-center'>
           <h1>Thank you for your visit! </h1>
           <br>
           <%= simple_form_for(@table) do |f| %>
-          <h4 class='text-center'>Please, leave a review about our restaurant:</h4>
+          <h4 class='text-center'>Please, review our restaurant:</h4>
           <br>
             <div class="form-inputs">
               <%= f.input :rating,
@@ -188,12 +188,12 @@
         <h2 class='text-center'><strong>Bill</strong></h2>
         
         <div class='olho-grid-container-bill' data-table-id="<%= @table.id %>" id="order-items-table">
-          <p><strong>Item</strong></p>
-          <p><strong>Qnt</strong></p>
-          <p><strong>Unit</strong></p>
-          <p><strong>Total</strong></p>
-          <p><strong>Status</strong></p>
-          <p></p>
+          <p class='bill-dot-bottom'><strong>Item</strong></p>
+          <p class='bill-dot-bottom'><strong>Qnt</strong></p>
+          <p class='bill-dot-bottom'><strong>Unit</strong></p>
+          <p class='bill-dot-bottom'><strong>Total</strong></p>
+          <p class='bill-dot-bottom'><strong>Status</strong></p>
+          <p class='bill-dot-bottom'></p>
           <% @order_items.each do |order_item| %>
             <p><%= order_item.product.name %></p>
             <p class='ml-2'><%= order_item.product_quantity %></p>
@@ -208,15 +208,15 @@
           <% end %>
         </div>
         <div class='w-100 text-right' style='height: fill'>
-          <p><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
+          <p class='bill-dot-top'><strong>TOTAL: <%= number_to_currency(@table.total) %></strong></p>
           
           <!-- Button trigger modal -->
           <% if @table.status == 'open' %>
-            <button type="button" class="olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal">
+            <button type="button" class="olho-checkout-btn" data-toggle="modal" data-target="#CheckoutModal">
               Checkout
             </button>
           <% else %>
-            <button type="button" class=" olho-table olho-form-button olho-btn olho-red" data-toggle="modal" data-target="#CheckoutModal" disabled>
+            <button type="button" class="olho-checkout-btn-disable" data-toggle="modal" data-target="#CheckoutModal" disabled>
               Checkout
             </button>
           <% end %>

@@ -123,3 +123,22 @@
 .photo_btn {
   border-radius: 0 !important;
 }
+
+.olho-checkout-btn {
+  background-color: rgba(0,0,0,0);
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.olho-checkout-btn:hover {
+  background-color: rgba(20,20,20,0.8);
+  color: lightyellow;
+}
+
+.olho-checkout-btn-disable {
+  background-color: rgba(0,0,0,0);
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+}
