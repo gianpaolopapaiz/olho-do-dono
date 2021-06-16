@@ -22,7 +22,7 @@
                     required: true %>
         <%= f.input :phone,
                     required: true %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file, input_html: { class: 'photo_btn' } %>
       </div>
 
       <div class="form-actions">

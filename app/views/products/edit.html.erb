@@ -13,11 +13,11 @@
                     collection: %w[Food Beverage Dessert] %>
         <%= f.input :price,
                     required: true %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file, input_html: { class: 'photo_btn' }  %>
       </div>
 
       <div class="form-actions">
-        <%= f.submit class: 'olho-form-button olho-btn olho-green' %>
+        <%= f.submit class: 'olho-form-button olho-btn olho-green olho-table' %>
       </div>
     <% end %>
   </div>
