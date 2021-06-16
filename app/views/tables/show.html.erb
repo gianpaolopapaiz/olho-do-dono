@@ -14,7 +14,7 @@
           <h5><strong>Status:</strong> <%= @table.status %></h5>
         </div>
         <div>
-          <p>Have you ever tried this? </p>
+          <p style='font-style: italic; margin-bottom: 2px;'>Have you ever tried this? </p>
           <div class='olho-div py-3 overflow-auto' style="background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Nwckz7EZz5ATFShtyaUCLaynOj8-L33TA&usqp=CAU');background-size: cover; height:262px;">
           </div>
         </div>
@@ -23,19 +23,20 @@
       <!-- Column 2 -->
       <% if @table.status == 'open' %>
         <!-- Product List-->
-        <div class='olho-div py-3 overflow-auto'>
-          <h2 class='text-center'>Menu</h2>
+        <div class='olho-div p-5 menu-background'>
+          <div class="h-100">
+          <h2 class='text-center text-white'><strong>Menu</strong></h2>
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
-              <a class="nav-item nav-link" id="nav-food-tab" data-toggle="tab" href="#nav-food" role="tab" aria-controls="nav-food" aria-selected="false">Food</a>
-              <a class="nav-item nav-link" id="nav-beverage-tab" data-toggle="tab" href="#nav-beverage" role="tab" aria-controls="nav-beverage" aria-selected="false">Beverage</a>
-              <a class="nav-item nav-link" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false">Dessert</a>
+              <a class="nav-item nav-link active olho-color-white" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true"><strong>All</strong></a>
+              <a class="nav-item nav-link olho-color-white" id="nav-food-tab" data-toggle="tab" href="#nav-food" role="tab" aria-controls="nav-food" aria-selected="false"><strong>Food</strong></a>
+              <a class="nav-item nav-link olho-color-white" id="nav-beverage-tab" data-toggle="tab" href="#nav-beverage" role="tab" aria-controls="nav-beverage" aria-selected="false"><strong>Beverage</strong></a>
+              <a class="nav-item nav-link olho-color-white" id="nav-dessert-tab" data-toggle="tab" href="#nav-dessert" role="tab" aria-controls="nav-dessert" aria-selected="false"><strong>Dessert</strong></a>
             </div>
           </nav>
-          <div class="tab-content" id="nav-tabContent">
+          <div class="tab-content overflow-auto menu-items-container" id="nav-tabContent">
             <!-- All Products -->
-            <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+            <div class="tab-pane fade show active " id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
               <% if @products.length > 0 %>
                 <div class=" d-flex align-items-center justify-content-start flex-wrap container">
                   <% @products.each do |product| %>
@@ -148,6 +149,7 @@
             </div>
 
           </div>
+          </div>
         </div>
 
       <% elsif @table.status == 'waiting' %>
@@ -182,15 +184,15 @@
       <% end %> 
         
       <!-- Column 3 -->
-      <div class='olho-div py-3 p-3'>
-        <h2 class='text-center'>Bill</h2>
+      <div class='olho-div py-3 p-3' style='background-color: lightyellow;'>
+        <h2 class='text-center'><strong>Bill</strong></h2>
         
         <div class='olho-grid-container-bill' data-table-id="<%= @table.id %>" id="order-items-table">
-          <p>Item</p>
-          <p>Qnt</p>
-          <p>Unit</p>
-          <p>Total</p>
-          <p>Status</p>
+          <p><strong>Item</strong></p>
+          <p><strong>Qnt</strong></p>
+          <p><strong>Unit</strong></p>
+          <p><strong>Total</strong></p>
+          <p><strong>Status</strong></p>
           <p></p>
           <% @order_items.each do |order_item| %>
             <p><%= order_item.product.name %></p>
