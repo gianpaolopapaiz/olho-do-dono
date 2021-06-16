@@ -3,8 +3,8 @@
   <div class="olho-div w-75 p-5">
     <h2> Restaurant Cash-Flow - Year 2021</h2>
     <%= line_chart [
-      {name: "Revenue", data: @total_revenue, xtitle: "Month", ytitle: "Amount", label: "Revenue", prefix: "$", thousands: ".", decimal: ","},
-      {name: "Expenses", data: @total_expenses, label: "Expenses", prefix: "$", thousands: ".", decimal: ","}
+      {name: "Revenue", data: @total_revenue, xtitle: "Month", ytitle: "Amount", label: "Revenue", prefix: "$", thousands: ".", decimal: ",", color: 'darkblue'},
+      {name: "Expenses", data: @total_expenses, label: "Expenses", prefix: "$", thousands: ".", decimal: ",", color: 'orange'}
     ] %>
     <br>
   </div>
