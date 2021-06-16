@@ -12,129 +12,133 @@
   <br>
   <div class="olho-div w-75 p-5">
     <h5> Revenues </h5>
-    <table class="table w-90">
-      <thead>
-        <tr>
-          <th scope="col"> REVENUE</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="col"> Food</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i]) %></td>
-          <%end%>
-        </tr>
-        <tr>
-          <th scope="col"> Beverage</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_beverage[i]) %></td>
-          <%end%>
-        </tr>
-        <tr>
-          <th scope="col"> Dessert</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_dessert[i]) %></td>
-          <%end%>
-        </tr>
-        <tr style="background-color: darkblue; color:white">
-          <th scope="col"> Total</th>
-          <% for i in 1..12 do %>
-            <th class="small" scope="col" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) %></th>
-          <%end%>
-        </tr>
-      </tbody>
-      <thead>
-        <tr>
-          <th scope="col"> EXPENSES</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="col"> Payroll</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right"> <%= number_to_currency(@cashflow_payroll[i]) %></td>
-          <%end%>
-        </tr>
-        <tr>
-          <th scope="col"> Utilities</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right"> <%= number_to_currency(@cashflow_rent[i]) %></td>
-          <%end%>
-        </tr>
-        <tr>
-          <th scope="col"> Office</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_office[i]) %></td>
-          <%end%>
-        </tr>
-        <tr>
-          <th scope="col"> Inputs</th>
-          <% for i in 1..12 do %>
-            <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_input[i]) %></td>
-          <%end%>
-        </tr>
-        <tr style="background-color: orange">
-          <th scope="col"> Total</th>
-          <% for i in 1..12 do %>
-            <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i]) %></th>
-          <%end%>
-        </tr>
-      </tbody>
-      <thead>
-        <tr>
-          <th scope="col" style="color: white"> Category</th>
-          <th scope="col"> Jan</th>
-          <th scope="col"> Feb</th>
-          <th scope="col"> Mar</th>
-          <th scope="col"> Apr</th>
-          <th scope="col"> May</th>
-          <th scope="col"> Jun</th>
-          <th scope="col"> Jul</th>
-          <th scope="col"> Aug</th>
-          <th scope="col"> Sep</th>
-          <th scope="col"> Oct</th>
-          <th scope="col"> Nov</th>
-          <th scope="col"> Dec</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="background-color: lightgreen">
-          <th scope="col"> Total</th>
-          <% for i in 1..12 do %>
-            <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency((@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) - (@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i])) %></th>
-          <%end%>
-        </tr>
-      </tbody>
-    </table>
-        <div class="m-3">
+    <div style="overflow-x:auto;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"> REVENUE</th>
+            <th scope="col"> Jan</th>
+            <th scope="col"> Feb</th>
+            <th scope="col"> Mar</th>
+            <th scope="col"> Apr</th>
+            <th scope="col"> May</th>
+            <th scope="col"> Jun</th>
+            <th scope="col"> Jul</th>
+            <th scope="col"> Aug</th>
+            <th scope="col"> Sep</th>
+            <th scope="col"> Oct</th>
+            <th scope="col"> Nov</th>
+            <th scope="col"> Dec</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="col"> Food</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i]) %></td>
+            <%end%>
+          </tr>
+          <tr>
+            <th scope="col"> Beverage</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_beverage[i]) %></td>
+            <%end%>
+          </tr>
+          <tr>
+            <th scope="col"> Dessert</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right;"> <%= number_to_currency(@cashflow_dessert[i]) %></td>
+            <%end%>
+          </tr>
+          <tr style="background-color: darkblue; color:white">
+            <th scope="col"> Total</th>
+            <% for i in 1..12 do %>
+              <th class="small" scope="col" style="text-align:right;"> <%= number_to_currency(@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) %></th>
+            <%end%>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th scope="col"> EXPENSES</th>
+            <th scope="col"> Jan</th>
+            <th scope="col"> Feb</th>
+            <th scope="col"> Mar</th>
+            <th scope="col"> Apr</th>
+            <th scope="col"> May</th>
+            <th scope="col"> Jun</th>
+            <th scope="col"> Jul</th>
+            <th scope="col"> Aug</th>
+            <th scope="col"> Sep</th>
+            <th scope="col"> Oct</th>
+            <th scope="col"> Nov</th>
+            <th scope="col"> Dec</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="col"> Payroll</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right"> <%= number_to_currency(@cashflow_payroll[i]) %></td>
+            <%end%>
+          </tr>
+          <tr>
+            <th scope="col"> Utilities</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right"> <%= number_to_currency(@cashflow_rent[i]) %></td>
+            <%end%>
+          </tr>
+          <tr>
+            <th scope="col"> Office</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_office[i]) %></td>
+            <%end%>
+          </tr>
+          <tr>
+            <th scope="col"> Inputs</th>
+            <% for i in 1..12 do %>
+              <td class="small" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_input[i]) %></td>
+            <%end%>
+          </tr>
+          <tr style="background-color: orange">
+            <th scope="col"> Total</th>
+            <% for i in 1..12 do %>
+              <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency(@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i]) %></th>
+            <%end%>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th scope="col" style="color: white"> Category</th>
+            <th scope="col"> Jan</th>
+            <th scope="col"> Feb</th>
+            <th scope="col"> Mar</th>
+            <th scope="col"> Apr</th>
+            <th scope="col"> May</th>
+            <th scope="col"> Jun</th>
+            <th scope="col"> Jul</th>
+            <th scope="col"> Aug</th>
+            <th scope="col"> Sep</th>
+            <th scope="col"> Oct</th>
+            <th scope="col"> Nov</th>
+            <th scope="col"> Dec</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: lightgreen">
+            <th scope="col"> Total</th>
+            <% for i in 1..12 do %>
+              <th class="small" scope="col" style="text-align:right; width:100px"> <%= number_to_currency((@cashflow_food[i] + @cashflow_beverage[i] + @cashflow_dessert[i]) - (@cashflow_payroll[i] + @cashflow_rent[i] + @cashflow_office[i] + @cashflow_input[i])) %></th>
+            <%end%>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="m-3">
       <%= link_to "back",  restaurant_path(@restaurant), class: "btn btn-back btn-sm" %>
     </div>
 
   </div>
+  <br>
+  <br>
 
 </div>
