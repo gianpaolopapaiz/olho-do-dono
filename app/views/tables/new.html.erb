@@ -1,7 +1,7 @@
 <div class="olho-form-container" id='table-page' style='height: 100vh'>
   <div class="container olho-div text-center p-5">
-  <h1 class='start-welcome'>Welcome to </h1>
-  <h1 class='start-title mb-5'><%= @restaurant.name %></h1>
+  <h1 class='start-welcome' style="font-family: 'Gruppo', cursive;"><strong>Welcome to </strong></h1>
+  <h1 class='start-title mb-5' style="font-family: 'Gruppo', cursive;"><strong><%= @restaurant.name %></strong></h1>
   <%= link_to 'Start', "/restaurants/#{@restaurant.id}/spaces/#{@number}/tables/create", class: 'olho-btn-ggg olho-green' %>
   </div>
 </div>
