@@ -154,7 +154,7 @@ def insert_tables(rest)
 			table = Table.new()
 			table.restaurant = rest
 			table.number = index + 1
-			table.terminal = Terminal.find(rand(1..3))
+			table.terminal = rest.terminals.sample
 			table.rating = rand(1..5)
 			table.comment = Faker::Restaurant.review 
 			table.status = 'closed'
