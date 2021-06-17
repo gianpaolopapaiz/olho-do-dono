@@ -13,12 +13,12 @@
             <div class="card-restaurant-linha row">
 
                 <div class="texto-restaurant-linha col-10">
-                    <h2><%= @restaurant.name %></h2>
+                    <h2 style="font-family: 'Courgette', cursive;"><%= @restaurant.name %></h2>
                     <br>
-                    <p><strong>Address: </strong><%= @restaurant.address %></p>
-                    <p><strong>Phone: </strong><%= @restaurant.phone %></p>
+                    <p style="font-family: 'Courgette', cursive;"><strong>Address: </strong><%= @restaurant.address %></p>
+                    <p style="font-family: 'Courgette', cursive;"><strong>Phone: </strong><%= @restaurant.phone %></p>
                     <br>
-                    <p><strong># of tables:</strong> <%= @restaurant.nbr_of_tables %></p>
+                    <p style="font-family: 'Courgette', cursive;"><strong># of tables:</strong> <%= @restaurant.nbr_of_tables %></p>
                     
                 </div>      
                 <div class="star-div col-2">
@@ -93,7 +93,7 @@
 
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Revenue & Cash-flow</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Revenue & Cash-flow</strong></h5>
                 <%= pie_chart [["Foods", @tot_amount1], ["Beverages", @tot_amount2], ["Desserts", @tot_amount3]], legend: "bottom", prefix: "$", thousands: ".", decimal: "," %>
                 <br>
                 <div style="text-align: right;">
@@ -104,7 +104,7 @@
 
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Open Expenses</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Open Expenses</strong></h5>
                 <%= bar_chart [ ["Payroll", @expense_hash['Payroll'] ], ["Rent&Utilities", @expense_hash['Rent&Utilities'] ], ["Office", @expense_hash['Office'] ], ["Inputs", @expense_hash['Inputs']] ], prefix: "$", thousands: ".", decimal: "," %>
                 <br>
                 <div style="text-align: right;">
@@ -115,7 +115,7 @@
 
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Kitchen Menu</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Kitchen Menu</strong></h5>
                 <%= column_chart [ [@item1_name, @item1 ], [@item2_name, @item2 ], [@item3_name, @item3 ] ], thousands: "." %>
                 <br>
                 <div style="text-align: right;">
@@ -135,7 +135,7 @@
 
         <div class="card mx-3 mt-3" style="width: 19rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Revenue Details</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Revenue Details</strong></h5>
                 <br>
                 <h6 style = "color: black"><strong>Day:</strong> <%= number_to_currency(@day_amount)  %> </h6>
                 <h6 style = "color: black"> <strong>Month:</strong> <%= number_to_currency(@month_amount) %> </h6> 
@@ -145,7 +145,7 @@
 
         <div class="card mx-3 mt-3" style="width: 19rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Tops by Revenue</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Tops by Revenue</strong></h5>
                 <br>
                 <h6 class="card-text " style = "color: black"><strong>Food:</strong> <%= @amount1 %></h6>
                 <h6 class="card-text " style = "color: black"><strong>Beverage:</strong> <%= @amount2 %></h6>
@@ -156,7 +156,7 @@
 
         <div class="card mx-3 mt-3" style="width: 11rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Orders</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Orders</strong></h5>
                 <br>
                 <h6 class="card-text " style = "color: black"><strong>Day:</strong> <%= @day_order_qty %></h6>
                 <h6 class="card-text " style = "color: black"><strong>Month:</strong> <%= @month_order_qty %></h6>
@@ -166,7 +166,7 @@
 
         <div class="card mx-3 mt-3" style="width: 11rem;">
             <div class="card-body">
-                <h5 class="card-title text-center"><strong>Menu Items</strong></h5>
+                <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Menu Items</strong></h5>
                 <br>
                 <h6 class="card-text " style = "color: black"><strong>Foods:</strong> <%= @nbr_foods %></h6>
                 <h6 class="card-text " style = "color: black"><strong>Beverages:</strong> <%= @nbr_beverages %></h6>
