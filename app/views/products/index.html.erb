@@ -16,7 +16,7 @@
           <div class="card-product-infos">
             <h2><%= product.name %></h2>
             <p><%= product.description %></p>
-            <p><strong>$<%= product.price %></strong></p>
+            <p><strong><%= number_to_currency(product.price) %></strong></p>
             <div class='card-product-infos-buttons d-flex' style='text-align: right'>
               <%= link_to 'edit', edit_product_path(product), class: 'olho-btn-card olho-green' %>
               <%= link_to 'delete', product_path(product), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" } %>
@@ -40,7 +40,7 @@
           <div class="card-product-infos">
             <h2><%= product.name %></h2>
             <p><%= product.description %></p>
-            <p><strong>$<%= product.price %></strong></p>
+            <p><strong><%= number_to_currency(product.price) %></strong></p>
             <div class='card-product-infos-buttons d-flex' style='text-align: right'>
               <%= link_to 'edit', edit_product_path(product), class: 'olho-btn-card olho-green' %>
               <%= link_to 'delete', product_path(product), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" }  %>
@@ -64,7 +64,7 @@
           <div class="card-product-infos">
             <h2><%= product.name %></h2>
             <p><%= product.description %></p>
-            <p><strong>$<%= product.price %></strong></p>
+            <p><strong><%= number_to_currency(product.price) %></strong></p>
             <div class='card-product-infos-buttons d-flex' style='text-align: right'>
               <%= link_to 'edit', edit_product_path(product), class: 'olho-btn-card olho-green' %>
               <%= link_to 'delete', product_path(product), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" }  %>

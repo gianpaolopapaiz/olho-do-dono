@@ -156,7 +156,7 @@ def insert_tables(rest)
 			table.number = index + 1
 			table.terminal = Terminal.find(rand(1..3))
 			table.rating = rand(1..5)
-			table.comment = 'Comment'
+			table.comment = Faker::Restaurant.review 
 			table.status = 'closed'
 			table.save
 			table.payment_due_date = rand(t1..t2)
