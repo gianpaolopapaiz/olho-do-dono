@@ -146,7 +146,7 @@ end
 
 def insert_tables(rest)
 	t1 = Time.parse("2021-01-02 12:00:00")
-	t2 = Time.parse("2021-06-10 23:00:00")
+	t2 = Time.parse("2021-06-17 17:00:00")
 	#table
 	30.times do
 		8.times do |index|
@@ -181,16 +181,51 @@ end
 def insert_expenses(rest)
 	t1 = Time.parse("2021-01-02 12:00:00")
 	t2 = Time.parse("2021-12-20 23:00:00")
-	50.times do |index|
-		puts "Adding expense #{index + 1} for restaurant #{rest.name}"
+
+  puts 'Adding Payroll expenses'
+  14.times do
 		exp = Expense.new
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
-		exp.category = ['Payroll', 'Rent&Utilities', 'Office', 'Inputs'].sample
-		exp.description = "product for #{exp.category}"
+		exp.category = 'Payroll'
+		exp.description = ['product a', 'product b'].sample
 		exp.amount = rand(500...5000)
 		exp.save
-	end
+  end
+
+  puts 'Adding Rent&Utilities expenses'
+  14.times do
+		exp = Expense.new
+		exp.restaurant = rest
+		exp.due_date = rand(t1..t2)
+		exp.category = 'Rent&Utilities'
+		exp.description = ['product a', 'product b'].sample
+		exp.amount = rand(500...5000)
+		exp.save
+  end
+
+  puts 'Adding Office expenses'
+  14.times do
+		exp = Expense.new
+		exp.restaurant = rest
+		exp.due_date = rand(t1..t2)
+		exp.category = 'Office'
+		exp.description = ['product a', 'product b'].sample
+		exp.amount = rand(500...5000)
+		exp.save
+  end
+
+  puts 'Adding Inputs expenses'
+  14.times do
+		exp = Expense.new
+		exp.restaurant = rest
+		exp.due_date = rand(t1..t2)
+		exp.category = 'Inputs'
+		exp.description = ['product a', 'product b'].sample
+		exp.amount = rand(500...5000)
+		exp.save
+  end
+
 end
 
 puts "Cleaning database..."
