@@ -188,7 +188,7 @@ def insert_expenses(rest)
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
 		exp.category = 'Payroll'
-		exp.description = ['product a', 'product b'].sample
+		exp.description = ['Admin staff salaries', 'Management team salaries', 'Waiters commissions', 'Cleaning staff salaries'].sample
 		exp.amount = rand(500...5000)
 		exp.save
   end
@@ -199,7 +199,7 @@ def insert_expenses(rest)
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
 		exp.category = 'Rent&Utilities'
-		exp.description = ['product a', 'product b'].sample
+		exp.description = ['Rent or Mortgage Interest', 'Internet connection', 'Insurance', 'Phone expenses', 'Infrastructure repairs'].sample
 		exp.amount = rand(500...5000)
 		exp.save
   end
@@ -210,7 +210,7 @@ def insert_expenses(rest)
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
 		exp.category = 'Office'
-		exp.description = ['product a', 'product b'].sample
+		exp.description = ['Office Furniture', 'Office Material', 'Advertising', 'Meals and Entertainment', 'Delivery costs'].sample
 		exp.amount = rand(500...5000)
 		exp.save
   end
@@ -221,8 +221,8 @@ def insert_expenses(rest)
 		exp.restaurant = rest
 		exp.due_date = rand(t1..t2)
 		exp.category = 'Inputs'
-		exp.description = ['product a', 'product b'].sample
-		exp.amount = rand(500...5000)
+		exp.description = ['Wheat flour', 'Vegetables', 'Gorgonzola Cheese', 'American Cheese', 'Pepperoni', 'Beverages'].sample
+		exp.amount = rand(200...3000)
 		exp.save
   end
 
