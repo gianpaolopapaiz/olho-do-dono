@@ -252,7 +252,7 @@ usuario.save
 puts "User ID: #{usuario.id}, Email: #{usuario.email}  created"
 
 restaurante = Restaurant.new()
-restaurante.name = '1900 - Moema'
+restaurante.name = 'Pizzaria 1900'
 restaurante.address = 'Alameda dos Nhambiquaras, 573 - Moema, São Paulo - SP, 04090-011'
 restaurante.phone = '(11) 5575-1900'
 restaurante.nbr_of_tables = 15
@@ -267,24 +267,24 @@ insert_tables(restaurante)
 insert_expenses(restaurante)
 
 restaurante = Restaurant.new()
-restaurante.name = '1900 - Morumbi'
+restaurante.name = 'Pizzeria Margherita'
 restaurante.address = 'R. Dr. Fonseca Brasil, 282 - Morumbi, São Paulo - SP, 05716-060'
 restaurante.phone = '(11) 5575-1900'
 restaurante.nbr_of_tables = 12
 restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/1900.jfif'
+photo_path3 = './app/assets/images/pizzaria2.jfif'
 restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
 restaurante.save
 puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
 # insert_products(restaurante.id)
 
 restaurante = Restaurant.new()
-restaurante.name = '1900 - Vila Mariana'
+restaurante.name = 'Pizzaria Bros'
 restaurante.address = 'R. Estado de Israel, 240 - Vila Mariana, São Paulo - SP, 04022-000'
 restaurante.phone = '(11) 5575-1900'
 restaurante.nbr_of_tables = 20
 restaurante.user_id = usuario.id
-photo_path3 = './app/assets/images/1900.jfif'
+photo_path3 = './app/assets/images/pizzaria3.jfif'
 restaurante.photo.attach(io: File.open(photo_path3), filename: 'photo3.png', content_type: 'image/jpg')
 restaurante.save
 puts "Restaurant #{restaurante.id} - #{restaurante.name} created"
