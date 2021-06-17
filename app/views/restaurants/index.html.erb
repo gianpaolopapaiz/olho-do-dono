@@ -1,8 +1,8 @@
 <div class="olho-form-container">
   <div class="container olho-div p-3">
     <div class='ml-4 mt-3'>
-      <h2><strong>Restaurants</strong></h2>
-      <p>Your restaurants list:</p>
+      <h1 style="font-family: 'Gruppo', cursive;"><strong>Restaurants</strong></h1>
+      <h2 style="font-family: 'Gruppo', cursive;">Your restaurants list:</h2>
     </div>
 
     <% if user_signed_in? %>
@@ -17,10 +17,10 @@
             <% end %>
 
             <div class="card-body">
-              <h5 class="card-title"><strong><%=restaurant.name%></strong></h5>
+              <h5 class="card-title" style="font-family: 'Courgette', cursive;"><strong><%=restaurant.name%></strong></h5>
               <br>
-              <h6 class="card-text "><strong>Endereço:</strong> <%=restaurant.address%></h6>
-              <h6 class="card-text"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
+              <h6 class="card-text " style="font-family: 'Courgette', cursive;"><strong>Endereço:</strong> <%=restaurant.address%></h6>
+              <h6 class="card-text" style="font-family: 'Courgette', cursive;"><strong>Telefone:</strong> <%=restaurant.phone%></h6>
               <div style="text-align: right;">
                 <span style="font-size: 30px">
                   <%= link_to restaurant_products_path(restaurant), class: 'qualquer' do%>

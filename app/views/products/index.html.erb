@@ -1,10 +1,10 @@
 <div class="olho-form-container">
   <div class="container olho-div pb-4 pt-4">
-    <h1 class="ml-4">Products</h1>
+    <h1 class="ml-4" style="font-family: 'Courgette', cursive;">Our restaurant products</h1>
 
     
     <% if @foods.length > 0 %>
-      <h2 class='text-center'>Food</h2>
+      <h2 class='text-center' style="font-family: 'Courgette', cursive;">Food</h2>
       <div class="container d-flex align-items-center justify-content-start flex-wrap">
       <% @foods.each do |product| %>
         <div class="card-product olho-div flex-grow-1">
@@ -27,8 +27,32 @@
       </div>  
     <% end %>
     
+    <% if @beverages.length > 0 %>
+      <h2 class='text-center mt-3' style="font-family: 'Courgette', cursive;">Beverage</h2>
+      <div class="container d-flex align-items-center justify-content-start flex-wrap">
+      <% @beverages.each do |product| %>
+        <div class="card-product olho-div flex-grow-1">
+          <% if product.photo.attached? %>
+            <%= cl_image_tag product.photo.key %>
+          <% else %>
+            <%= image_tag('no-photo.jpg') %>
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= product.name %></h2>
+            <p><%= product.description %></p>
+            <p><strong><%= number_to_currency(product.price) %></strong></p>
+            <div class='card-product-infos-buttons d-flex' style='text-align: right'>
+              <%= link_to 'edit', edit_product_path(product), class: 'olho-btn-card olho-green' %>
+              <%= link_to 'delete', product_path(product), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" }  %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+
     <% if @desserts.length > 0 %>
-      <h2 class='text-center mt-3'>Dessert</h2>
+      <h2 class='text-center mt-3' style="font-family: 'Courgette', cursive;">Dessert</h2>
       <div class="container d-flex align-items-center justify-content-start flex-wrap">
       <% @desserts.each do |product| %>
         <div class="card-product olho-div flex-grow-1">
@@ -51,29 +75,6 @@
       </div>
     <% end %>
     
-    <% if @beverages.length > 0 %>
-      <h2 class='text-center mt-3'>Beverage</h2>
-      <div class="container d-flex align-items-center justify-content-start flex-wrap">
-      <% @beverages.each do |product| %>
-        <div class="card-product olho-div flex-grow-1">
-          <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.key %>
-          <% else %>
-            <%= image_tag('no-photo.jpg') %>
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= product.name %></h2>
-            <p><%= product.description %></p>
-            <p><strong><%= number_to_currency(product.price) %></strong></p>
-            <div class='card-product-infos-buttons d-flex' style='text-align: right'>
-              <%= link_to 'edit', edit_product_path(product), class: 'olho-btn-card olho-green' %>
-              <%= link_to 'delete', product_path(product), class: 'olho-btn-card olho-red', method: :delete, data: { confirm: "Are you sure?" }  %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      </div>
-    <% end %>
     <br>
     <%= link_to 'add product',  new_restaurant_product_path(@restaurant), class:'olho-btn olho-green ml-4 btn-sm' %>
     <%= link_to 'Back',  restaurants_path, class:'btn-back ml-1 mb' %>
