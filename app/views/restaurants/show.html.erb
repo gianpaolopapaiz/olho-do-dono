@@ -105,7 +105,7 @@
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Open Expenses</strong></h5>
-                <%= bar_chart [ ["Payroll", @expense_hash['Payroll'] ], ["Rent&Utilities", @expense_hash['Rent&Utilities'] ], ["Office", @expense_hash['Office'] ], ["Inputs", @expense_hash['Inputs']] ], prefix: "$", thousands: ".", decimal: "," %>
+                <%= bar_chart [ ["Payroll", @expense_hash['Payroll'] ], ["Rent&Utilities", @expense_hash['Rent&Utilities'] ], ["Office", @expense_hash['Office'] ], ["Inputs", @expense_hash['Inputs']] ], colors: ["coral","brown" , "darkolivegreen", "lightgreen"], prefix: "$", thousands: ".", decimal: "," %>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_expenses_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>
@@ -116,7 +116,7 @@
         <div class="card mx-3 mt-3" style="width: 21rem;">
             <div class="card-body">
                 <h5 class="card-title text-center" style="font-family: 'Gruppo', cursive;"><strong>Kitchen Menu</strong></h5>
-                <%= column_chart [ [@item1_name, @item1 ], [@item2_name, @item2 ], [@item3_name, @item3 ] ], thousands: "." %>
+                <%= column_chart [ [@item1_name, @item1 ], [@item2_name, @item2 ], [@item3_name, @item3 ] ], colors: ["coral","brown" ,"lightgreen"], thousands: "." %>
                 <br>
                 <div style="text-align: right;">
                 <%= link_to 'Show',  restaurant_products_path(@restaurant), class: 'olho-form-button olho-btn olho-green  btn-sm' %>

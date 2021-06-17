@@ -9,9 +9,9 @@
           </div>
         <% end %>
         <div class='text-center'>
-          <h3><strong><%= @restaurant.name %></strong></h3>
-          <h5><strong>Table:</strong> <%= @table.number %></h5>
-          <h5><strong>Status:</strong> <%= @table.status %></h5>
+          <h1 style="font-family: 'Gruppo', cursive;"><strong><%= @restaurant.name %></strong></h1>
+          <h3 style="font-family: 'Gruppo', cursive;"><strong>Table:</strong> <%= @table.number %></h3>
+          <h3 style="font-family: 'Gruppo', cursive;"><strong>Status:</strong> <%= @table.status %></h3>
         </div>
         <div>
           <p style='font-style: italic; margin-bottom: 2px;'>Have you ever tried this? </p>
@@ -163,10 +163,10 @@
         <!-- Thanks and Rating -->
         <div class='olho-div py-3 overflow-auto d-flex align-items-center justify-content-center menu-background'>
           <div class='olho-div olho-form-end text-center'>
-          <h1>Thank you for your visit! </h1>
+          <h1 style="font-family: 'Gruppo', cursive;">Thank you for your visit! </h1>
           <br>
           <%= simple_form_for(@table) do |f| %>
-          <h4 class='text-center'>Please, review our restaurant:</h4>
+          <h4 class='text-center' style="font-family: 'Gruppo', cursive;">Please, review our restaurant:</h4>
           <br>
             <div class="form-inputs">
               <%= f.input :rating,
@@ -227,13 +227,13 @@
             <div class="modal-dialog h-100 d-flex align-items-center justify-content-center" role="document">
               <div class="modal-content olho-div">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+                  <h3 class="modal-title" id="exampleModalLabel" style="font-family: 'Gruppo', cursive;">Checkout</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                  <div class="olho-form container text-center">
-                  <h3 class='mb-4'>Payment Method</h3>
+                  <h2 class='mb-4' style="font-family: 'Gruppo', cursive;">Payment Method</h3>
                   <%= simple_form_for(@table) do |f| %>
                     <div class="form-inputs">
                       <%= f.association :terminal, label: 'Choose an option:' %>
