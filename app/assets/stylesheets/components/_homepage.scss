@@ -19,3 +19,65 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+.banner-olho{
+  min-height: calc(100vh - (67px * 2));
+}
+
+.item-1 {
+  background-image: url('homepage.png');
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - (67px * 2));
+}
+
+.item-2 {
+  background-image: url('https://s27389.pcdn.co/wp-content/uploads/2020/08/uk-business-leaders-say-success-technology-background-linked-1013x440.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - (67px * 2));
+}
+
+.item-3 {
+  background-image: url('https://pmtips.net/Portals/0/EasyDNNnews/1783/img-working1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - (67px * 2));
+}
+
+.item-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.item-flex h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.item-flex h2 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.item-flex p {
+  font-size: 24px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.item-text {
+  background-color: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 10px;
+}
+

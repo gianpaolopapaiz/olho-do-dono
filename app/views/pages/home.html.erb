@@ -1,9 +1,61 @@
-<div class="banner olho-form-container-about">
+<%# <div class="banner olho-form-container-about">
   <div class="container">
     <h1>OLHO DO DONO<strong> - Restaurant Managment Remote!</strong></h1>
     <p>Keep all tasks your businesses in your eye, and grow in new one.</p>
     <br>
     <br>
     <%= link_to 'About us', about_path(@about), class: 'btn olho-btn olho-green' %>
+  <%# </div>
+</div> %>
+
+
+<div id="carouselExampleIndicators" class="carousel slide banner-olho zindex-0" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner h-100">
+    <div class="carousel-item active item-1">
+      <div class="item-flex container">
+        <div class='item-text'>
+          <h1>OLHO DO DONO</h1>
+          <br>
+          <p>Improve your customer experience and keep all tasks of your business under your eyes! Let us help you to expand your management capacity!</p>
+          <br>
+          <%= link_to 'About us', about_path(@about), class: 'btn olho-btn olho-green' %>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item item-2">
+      <div class="item-flex container">
+        <div class='item-text'>
+          <h1>OLHO DO DONO</h1>
+          <br>
+          <p>Let the Technology help you to manage your business</p>
+          <br>
+          <%= link_to 'About us', about_path(@about), class: 'btn olho-btn olho-green' %>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item item-3">
+      <div class="item-flex container">
+        <div class='item-text'>
+          <h1>OLHO DO DONO</h1>
+          <br>
+          <p>All data in your hand, manage your business from anywhere</p>
+          <br>
+          <%= link_to 'About us', about_path(@about), class: 'btn olho-btn olho-green' %>
+        </div>
+      </div>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" data-slide-next aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
