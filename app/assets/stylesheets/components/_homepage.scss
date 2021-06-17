@@ -25,21 +25,21 @@
 }
 
 .item-1 {
-  background-image: url('homepage.png');
+  background-image: image-url('homepage.png');
   background-size: cover;
   background-position: center;
   height: calc(100vh - (67px * 2));
 }
 
 .item-2 {
-  background-image: url('item-2.jpeg');
+  background-image: image-url('item-2.jpeg');
   background-size: cover;
   background-position: center;
   height: calc(100vh - (67px * 2));
 }
 
 .item-3 {
-  background-image: url('item-3.jpg');
+  background-image: image-url('item-3.jpg');
   background-size: cover;
   background-position: center;
   height: calc(100vh - (67px * 2));
