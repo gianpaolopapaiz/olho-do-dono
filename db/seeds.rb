@@ -240,13 +240,13 @@ User.destroy_all
 puts 'Creating fake users...'
 
 usuario = User.new()
-usuario.email = 'joaquim@dono.com.br'
+usuario.email = 'marcio@dono.com.br'
 usuario.password = '123456'
 usuario.password_confirmation = '123456'
-usuario.first_name = 'Joaquim'
-usuario.last_name = 'Oliveira'
+usuario.first_name = 'Marcio'
+usuario.last_name = 'Silva'
 usuario.phone = '(11) 99933-8833'
-photo_path1 = './app/assets/images/dono1.jfif'
+photo_path1 = './app/assets/images/minha_foto.png'
 usuario.photo.attach(io: File.open(photo_path1), filename: 'perfil1.png', content_type: 'image/jpg')
 usuario.save
 puts "User ID: #{usuario.id}, Email: #{usuario.email}  created"
